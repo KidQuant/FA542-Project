@@ -84,6 +84,3 @@ basicStats(aapl)
 t.test(aapl)
 
 
-
-
-
