@@ -1,6 +1,7 @@
 install.packages("quantmod")
-
+install.packages("fBasics")
 library("quantmod")
+library("fBasics")
 
 setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
 
@@ -62,5 +63,27 @@ plot_histogram(AMD, "AMD", "red")
 plot_histogram(EBAY, "EBAY", "green")
 plot_histogram(HPQ, "HPQ", "orange")
 plot_histogram(IBM, "IBM", "brown")
+
+
+###############################################
+# Log Prices & Log returns
+###############################################
+
+# Calculate daily returns for AAPL
+aapl_returns <- diff(aapl_prices) / lag(aapl_prices, -1)
+aapl_returns <- na.omit(aapl_returns)
+aapl <- log(aapl_returns + 1)
+
+plot(aapl, type = "l", main = "AAPL Log Returns", xlab = "Date", ylab = "Log Price")
+
+mean(aapl)
+var(aapl)
+skewness(aapl)
+kurtosis(aapl)
+basicStats(aapl)
+t.test(aapl)
+
+
+
 
 
