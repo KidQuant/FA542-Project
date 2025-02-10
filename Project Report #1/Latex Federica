@@ -1,0 +1,242 @@
+\documentclass[11pt,a4paper]{article}
+
+% -----------------------
+% Packages
+% -----------------------
+\usepackage[utf8]{inputenc}   % UTF-8 encoding
+\usepackage[T1]{fontenc}      % Better font encoding
+\usepackage{lmodern}          % Latin Modern font
+\usepackage{amsmath,amssymb}  % Math packages
+\usepackage{graphicx}         % Including images
+\usepackage{geometry}         % Page margins
+\usepackage{setspace}         % Line spacing
+\usepackage{hyperref}         % For hyperlinks
+\usepackage{titlesec}         % Customizing titles
+\usepackage{fancyhdr}         % Header and footer customization
+\usepackage{listings}         % For code listings
+\usepackage{xcolor}           % For custom colors
+\usepackage{subcaption}       % For subfigures
+\usepackage{booktabs}         % For professional tables
+\usepackage{tabularx}         % For flexible tables
+\usepackage{siunitx}          % For numerical alignment
+\usepackage{caption}          % For table captions
+\usepackage{float}            % For figure placement
+\usepackage{mathtools}        % Additional math symbols
+\usepackage{pdfpages}
+
+% -----------------------
+% Page Layout
+% -----------------------
+\geometry{
+  left=1in,
+  right=1in,
+  top=1in,
+  bottom=1in,
+}
+
+% Line spacing
+\onehalfspacing
+
+% -----------------------
+% Custom Colors
+% -----------------------
+\definecolor{mygreen}{RGB}{28,172,0}    % Comment color
+\definecolor{mygray}{RGB}{242,242,242}  % Background color for listings
+\definecolor{mymauve}{RGB}{170,55,241}  % String color
+
+% -----------------------
+% Listings Configuration
+% -----------------------
+\lstset{ %
+  language=Python,                     % Set Python as the language
+  backgroundcolor=\color{mygray}, % Background color
+  basicstyle=\small\ttfamily,     % Font style
+  keywordstyle=\color{blue},      % Keyword color
+  commentstyle=\color{mygreen},   % Comment color
+  stringstyle=\color{mymauve},    % String color
+  numbers=left,                   % Line numbers on the left
+  numberstyle=\tiny\color{gray},  % Line number style
+  stepnumber=1,                   % Line number step
+  numbersep=5pt,                  % Distance from code to line numbers
+  breaklines=true,                % Line breaking
+  breakatwhitespace=true,         % Break at whitespace
+  showspaces=false,               % Do not show spaces
+  showstringspaces=false,         % Do not show string spaces
+  showtabs=false,                 % Do not show tabs
+  frame=single,                   % Frame around code
+  captionpos=b,                   % Caption position
+  tabsize=2                       % Tab size
+}
+
+% -----------------------
+% Header and Footer
+% -----------------------
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{FE542 Times Series with Applications in Finance}
+\fancyhead[R]{Professor Pal}
+\fancyfoot[C]{\thepage}
+
+% -----------------------
+% Section Formatting
+% -----------------------
+\titleformat{\section}
+  {\bfseries\Large}{\thesection}{1em}{}
+
+\titleformat{\subsection}
+  {\bfseries\large}{\thesubsection}{1em}{}
+
+\titleformat{\subsubsection}
+  {\bfseries}{\thesubsubsection}{1em}{}
+
+
+% -----------------------
+% Begin Document
+% -----------------------
+\begin{document}
+
+% -----------------------
+% Cover Page
+% -----------------------
+\begin{titlepage}
+    \centering
+    % Title at the Top
+    \vspace*{1cm}\href{}{}
+    \textbf{\LARGE FE542 Times Series with Applications in Finance} \\
+    \vspace{0.5cm}
+    \textbf{\Large Project Report 1} \\
+    \vspace{1cm}
+    \textbf{\Large Group 1} \\
+    \vspace{1.5cm}
+
+    % University Logo in the Middle
+    \includegraphics[width=0.4\textwidth]{Logo Stevens.png} \\
+    \vspace{1.5cm}
+
+    % Instructor and Semester Information
+    \begin{tabular}{rl}
+        \textbf{Instructor:} & Professor Pal \\
+        \textbf{Semester:} & Spring 2024 \\
+    \end{tabular} \\
+    \vspace{2cm}
+
+    % Group Members at the Bottom
+    \begin{tabular}{ll}
+        \textbf{Group Members:} & Andre Sealy, Federica Malamisura, and Swapnil Pant\\
+    \end{tabular} \\
+    \vspace{0.5cm}
+
+    % Optional: Additional Spacing to Ensure Content Fits Well
+    \vfill
+\end{titlepage}
+
+% -----------------------
+% Table of Contents
+% -----------------------
+\newpage
+\tableofcontents
+\newpage
+
+% -----------------------
+% Task 1
+% -----------------------
+
+\section{Overview of the Asset Class and Companies}
+
+The chosen asset class for this project is the \textbf{technology industry}. This sector encompasses companies specializing in software, hardware, semiconductors, and related services. The analysis will focus on the following companies:
+
+\begin{itemize}
+    \item Apple Inc. (AAPL)
+    \item Adobe Inc. (ADBE)
+    \item Advanced Micro Devices Inc. (AMD)
+    \item eBay Inc. (EBAY)
+    \item HP Inc. (HPQ)
+    \item IBM Corporation (IBM)
+    \item Juniper Networks Inc. (JNPR)
+    \item Microsoft Corporation (MSFT)
+    \item Oracle Corporation (ORCL)
+    \item Qualcomm Inc. (QCOM)
+\end{itemize}
+
+% -----------------------
+% Task 2
+% -----------------------
+
+\section{R Script for Analysis}
+
+The R script used for the analysis is as follows:
+
+\begin{lstlisting}[caption={R Script for Stock Price Analysis}, label={lst:rscriptexample}]
+symbols <- c("AAPL", "ADBE", "AMD", "EBAY", "HPQ", "IBM", "JNPR", "MSFT", "ORCL", "QCOM")
+getSymbols(symbols)
+# AAPL Stock Price Plot
+aapl_prices <- as.numeric(AAPL[, "AAPL.Close"])
+aapl_dates <- index(AAPL)
+plot(aapl_dates, aapl_prices, 
+     type = "l",
+     main = "AAPL Stock Price",
+     xlab = "Date",
+     ylab = "Price",
+     col = "blue")
+# Repeat similar analysis for other stocks...
+\end{lstlisting}
+
+
+% -----------------------
+% Task 3
+% -----------------------
+
+\section{Properties of Time-Series}
+
+
+% -----------------------
+% Task 4
+% -----------------------
+
+\section{Visualization of Results}
+
+\subsection{Histograms of Stock Prices}
+
+Histograms for the stock prices of selected companies are shown below:
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{Rplot.png}
+    \caption{Histograms of Stock Prices for Selected Companies.}
+    \label{fig:aapl_stock_price}
+\end{figure}
+
+\subsection{Log Returns for AAPL}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{Log ret.png}
+    \caption{AAPL Log Returns Over Time.}
+    \label{fig:aapl_log_returns}
+\end{figure}
+
+% -----------------------
+% Task 5
+% -----------------------
+
+\section{Descriptive Statistics}
+
+Using the R script, the log returns for AAPL were calculated, and the following statistics were derived:
+
+\begin{itemize}
+    \item Mean: 0.000951
+    \item Variance: 0.000391
+    \item Skewness: -0.3606
+    \item Kurtosis: 6.6225
+\end{itemize}
+
+% -----------------------
+% Conclusion
+% -----------------------
+
+\section{Conclusion}
+
+The analysis of the technology industry asset class was conducted using an R script. Key outputs include stock price trends, histograms, and log return statistics. Future work will involve applying time series models to forecast returns and assess volatility.
+
+\end{document}
+
