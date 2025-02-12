@@ -27,6 +27,7 @@
 \usepackage{floatrow}
 \usepackage{listings}
 \floatsetup[table]{capposition=top}
+\usepackage{appendix}
 \usepackage{xcolor}
 \hypersetup{
 	colorlinks,
@@ -58,6 +59,7 @@
 	showtabs=false,                  
 	tabsize=2
 }
+\onehalfspacing
 
 \lstset{style=mystyle}
 
@@ -65,6 +67,139 @@
 	
 \maketitle
 
+\section{Overview of the Asset and the Market}
 
+The asset class for our time series analysis consists of equities primarily in the Technology sector. The reason for choosing the technology sector out of many industry classifications is multifaceted and involves numerous foundational considerations. First, we consider that tech stocks often have higher betas (meaning, they move with the market) on average, suggesting higher annualized volatility. Second, they are more sensitive to new information related to innovation cycles, such as new product releases, software updates, and research. Finally, we have the growth aspect, which involves the shifts in macroeconomic trends (such as interest rates), global demand, and supply chains. The border macroeconomic environment and the fundamentals make tech stocks an ideal candidate for time series analysis.
+
+The colloquial definition of a "tech stock" is universal enough to conduct our analysis; however, not all are created equal. Technology companies offer clients and end users a wide range of features, products, and services. As such, we only consider tech stocks that are considered "peers" with respect to our reference target (or reference target being AAPL, considering we already have a good idea of how the asset behaves). We classify tech stocks based on the Global Industry Classification Standard (GICS), with a primary focus on the U.S. being the location of the domicile or headquarters. This classification includes information technology, hardware, and equipment.
+
+\begin{table}[ht]
+	\centering
+	\caption{Market Comparisons of Technology Stocks (as of 2/10/25)}
+	\begin{tabular}[t]{lcccc}
+		\toprule
+		Company Name & Market Cap & Last Price & 1D Pct Chg& 1M Pct Chg \\
+		\midrule
+		%Apple Inc. (AAPL)* & 3.42T&227.65&0.01\%&-3.88\%\\
+		Microsoft Corp. (MSFT) & 3.06T &412.22&2.87\%&-1.61\%  \\
+		Qualcomm Inc. (QCOM) & 189.52B &171.36&2.02\%&9.16\%  \\
+		Adobe Inc. (ADBE) & 196.36B	&451.10&4.16\%&11.13\% \\	   
+		Advance Micro Devices (AMD) & 179.03B&110.48&2.71\%&-4.79\% \\				   
+		\bottomrule
+	\end{tabular}\label{tab:market_of_tech}
+\end{table}
+
+Table (\ref{tab:market_of_tech}) shows a sample of the following tech stocks that we have decided to include in our initial analysis. These stocks include Microsoft Corp (MSFT), Qualcomm Inc. (QCOM), Adobe Inc. (ADBE), and Advance Micro Devices (AMD). This sample is organized based on market capitalization, which we can obviously see that MSFT is significantly larger the rest of our sample. We have also provided the last traded price, the one-day percentage change in price, as well as the 1-month percentage change.
+
+\section{Properties of the Time-Series}
+
+In this section, we will outline foundational descriptive statistics, which involve the statistical moments and distributions of our sample securities and time series analysis.
+
+\subsection{Descriptive statistics}
+First, we outline a few sample statistics for the stocks in our sample. These statistics involves the sample mean, denoted by
+\begin{equation}
+	\hat{\mu}_x=\frac{1}{T}\sum_{t=1}^{T}x_t,
+\end{equation}
+the sample standard deviation, denoted by,
+\begin{equation}
+	\hat{\sigma}_x=\sqrt{\frac{1}{T-1}\sum_{t=1}^{T}\left(x_t-\hat{\mu}_2\right)^2},
+\end{equation}
+the sample skewness, denoted by
+\begin{equation}
+	\hat{S}(x)=\frac{1}{\left(T-1\right)\hat{\sigma}^3_x}\sum_{t=1}^{T}\left(x_t-\hat{\mu}_x\right)^3,
+\end{equation}
+and the sample kurtosis (excess kurtosis), denoted by
+\begin{equation}
+	\hat{K}(x)=\frac{1}{\left(T-1\right)\hat{\sigma}^4_x}\sum_{t=1}^{T}\left(x_t-\hat{\sigma}_x\right)^4.
+\end{equation}
+The sample mean, $\hat{\mu}_x$ represents the daily average simple (or log) returns, where $T$ are the number of days in the sample. The sample standard deviation, denoted by $\hat{\sigma}_x$, represents the daily realized volatility, the universal risk measurement. Table (\ref{tab:descriptive}) shows the descriptive statistics of the tech stocks in our sample of the daily sample returns. The start date of our analysis is January 3rd, 2007, which gives us a time interval of roughly 18 years. In addition to the sample mean, standard deviation, skewness, and excess kurtosis, we have also decided to include the minimum and maximum prices within this time period for a better perspective.
+\begin{table}[ht]
+	\centering
+	\caption{Descriptive statistics of Tech Stocks (\textit{Daily Simple Returns \%})}
+	\begin{tabular}[t]{lcccccc}
+		\toprule
+		Security & Mean ($\hat{\mu}_x$) & Std Dev ($\hat{\sigma}_x$) & Skewness ($\hat{S}(x)$) & Kurtosis ($\hat{K}(x)$) &Min&Max \\
+		\midrule
+		%Apple Inc. (AAPL)* & 3.42T&227.65&0.01\%&-3.88\%\\
+		MSFT & 0.07 & 1.76 & 0.27 & 9.17&-14.73&18.60  \\
+		QCOM & 0.05 & 2.17 & 0.27 & 9.53 &-15.25&23.20 \\
+		ADBE & 0.07	& 2.16 &-0.12 & 8.66 & -19.03 & 17.71 \\	   
+		AMD  & 0.10 & 3.66 & 0.78 & 12.39&-24.22&52.29 \\				   
+		\bottomrule
+	\end{tabular}\label{tab:descriptive}
+\end{table}
+
+As we can see, MSFT has the smallest sample standard deviation $\hat{\sigma}_x$ out of all the securities in our sample despite having roughly similar daily simple returns. From an investment perspective, AMD provides the greatest return per unit of risk. The returns between our sample securities are roughly similar when we look at daily log returns in Table (\ref{tab:log_descriptive}).
+
+The sample skewness measures the asymmetry of a probability distribution around the sample mean. It helps determine whether our sample is skewed more towards one side of the distribution. If the sample skewness, $\hat{S}(x)\approx 0,$ the distribution is symmetrical. The securities MSFT, QCOM, and ABDE are roughly symmetrical, as the skewness is approximately 0. 
+
+On the hand, the sample kurtosis measures how heavy the tails of the probability distribution are, which helps assess the presence of extreme values and the frequency of their occurrence. A normal distribution has a sample kurtosis of  $\hat{K}(x)\approx 3$, which indicates a normal distribution. All of the securities in our sample have extremely high kurtosis, which is natural for equities, considering financial markets experience extreme price movements more frequently than a normal distribution would predict. Financial markets also show periods of high and low volatility; when volatility spikes, returns tend to have more extreme values.
+
+Considering the sample skewness, AMD is much further away from 0. There is some slight positive skew for MSFT and QCOM and some slight negative skew for ADBE. We do not have a single sample statistic that we can use to differentiate skewed versus unskewed. However, we can test for skewness using the Jarque and Bera test for normality.
+
+The Jarque-Bera (JB) test is a statistical test used to check whether a dataset follows a normal distribution. It does this by examining the skewness and kurtosis of the dataset with the following formula:
+\begin{equation}
+	JB= \underbrace{\frac{\hat{S}^2(r)}{\sqrt{\sfrac{6}{T}}}}_{\textit{skewness}}  +\overbrace{\frac{[\hat{K}(r)-3]^2}{\sfrac{24}{T}}}^{\textit{kurtosis}}
+\end{equation}
+which is distributed as a chi-square, $\mathcal{X}^2$ random variable with 2 degrees of freedom. Given the sample of returns, $\lbrace r_1,\ldots,r_T\rbrace$, to test the skewness of the returns, we consider the following hypothesis test
+\[
+\begin{aligned}
+	H_0&:S(r)= 0\\
+	H_a&:S(r)\neq 0\\
+\end{aligned}
+\]
+where the $t-$statistic is 
+\begin{equation}
+	t=\frac{\hat{S}(r)}{\sqrt{\sfrac{6}{T}}}
+\end{equation}
+We would also need to conduct a hypothesis test for the excess kurtosis, which is
+\[
+\begin{aligned}
+	H_0&:K(r)-3= 0\\
+	H_a&:K(r)-3\neq 0\\
+\end{aligned}
+\]
+where the $t-$statistics is the following:
+\begin{equation}
+	t=\frac{\hat{K}(r-3)}{\sqrt{\sfrac{24}{T}}}
+\end{equation}
+We provide the JB-test for statistical normality with the skewness, $\hat{S}(x)$, kurtosis, $\hat{K}(x)$, t-statistic, $\mathcal{X}^2$, and p-values. We reject the null-hypothesis, $H_0$ of normality if the $p-$value of the JB statistic is less than the significance level. As the Table (\ref*{tab:jbtest}) shows, the $p$-values of the JB-test for our sample securities are significantly below the 5\% significance level, which indicates that MSFT, QCOM, AMD are skewed to the right (positively skewed) and ADBE are negatively skewed.
+\begin{table}[ht]
+	\centering
+	\caption{Jarque-Bera Statistical Test for Normality}
+	\begin{tabular}[t]{lcccc}
+		\toprule
+		Security & Skewness ($\hat{S}(x)$) & Kurtosis ($\hat{K}(x)$) & $t$-statistic ($\mathcal{X}^2$) & $p$-value \\
+		\midrule
+		%Apple Inc. (AAPL)* & 3.42T&227.65&0.01\%&-3.88\%\\
+		MSFT &  0.27 & 9.17  & 14325.07 & 2.2e-16  \\
+		QCOM &  0.27 & 9.53  & 14733.69 & 2.2e-16 \\
+		ADBE & -0.12 & 8.66  & 16759.00 & 2.2e-16 \\	   
+		AMD  &  0.78 & 12.39 & 11128.07 & 2.2e-16 \\				   
+		\bottomrule
+	\end{tabular}\label{tab:jbtest}
+\end{table}
+
+\subsection{Visualization}
+\newpage
+\begin{appendices}
+\section{Appendix}
+\subsection{Tables}
+\begin{table}[ht]
+	\centering
+	\caption{Descriptive statistics of Tech Stocks (\textit{Daily Log Returns \%})}
+	\begin{tabular}[t]{lcccccc}
+		\toprule
+		Security & Mean ($\hat{\mu}_x$) & Std Dev ($\hat{\sigma}_x$) & Skewness ($\hat{S}(x)$) & Kurtosis ($\hat{K}(x)$) &Min&Max \\
+		\midrule
+		%Apple Inc. (AAPL)* & 3.42T&227.65&0.01\%&-3.88\%\\
+		MSFT & 0.05 & 1.76 &-0.00 & 8.68 &-15.94 &17.06  \\
+		QCOM & 0.03 & 2.17 &-0.08 & 8.80 &-16.54 & 20.86 \\	
+		ADBE & 0.03 & 3.64 & 0.18 & 7.64 &-21.11 &16.31 \\
+		AMD  & 0.05 & 2.16 &-0.47 & 9.34 &-27.74 &42.06 \\				   
+		\bottomrule
+	\end{tabular}\label{tab:log_descriptive}
+\end{table}
+\end{appendices}
 	
 \end{document}

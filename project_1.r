@@ -1,86 +1,53 @@
-install.packages("quantmod")
-install.packages("fBasics")
 library("quantmod")
 library("fBasics")
 
 setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
 
-symbols <- c("AAPL", "ADBE", "AMD", "EBAY", "HPQ", "IBM", "JNPR", "MSFT", "ORCL", "QCOM")
+symbols <- c("ADBE", "AMD", "MSFT", "QCOM", "EBAY", "ORCL")
 getSymbols(symbols)
 
-# Convert AAPL to a regular time series and plot
-aapl_prices <- as.numeric(AAPL[, "AAPL.Close"])
-aapl_dates <- index(AAPL)
-plot(aapl_dates, aapl_prices, 
-     type = "l",
-     main = "AAPL Stock Price",
-     xlab = "Date",
-     ylab = "Price",
-     col = "blue")
-grid()
+msft_returns <- dailyReturn(MSFT$MSFT.Close)
+msft_returns <- msft_returns * 100
+basicStats(msft_returns)
+log_msft_returns <- log(msft_returns + 1)
+log_msft_returns <- log_msft_returns * 100
+basicStats(log_msft_returns)
 
-# Convert AMD to a regular time series and plot
-amd_prices <- as.numeric(AMD[, "AMD.Close"])
-amd_dates <- index(AMD)
-plot(amd_dates, amd_prices, 
-     type = "l",
-     main = "AMD Stock Price",
-     xlab = "Date",
-     ylab = "Price",
-     col = "red")
-grid()
+amd_returns <- dailyReturn(AMD$AMD.Close)
+amd_returns <- amd_returns * 100
+basicStats(amd_returns)
+log_amd_returns <- log(amd_returns + 1)
+log_amd_returns <- log_amd_returns * 100
+basicStats(log_amd_returns)
 
-
-# Convert EBAY to a regular time series and plot
-ebay_prices <- as.numeric(EBAY[, "EBAY.Close"])
-ebay_dates <- index(EBAY)
-plot(ebay_dates, ebay_prices, 
-     type = "l",
-     main = "EBAY Stock Price",
-     xlab = "Date",
-     ylab = "Price",
-     col = "green")
-grid()
-
-dev.off()
-
-par(mfrow = c(2, 3))
-
-# Define a function to plot histograms
-plot_histogram <- function(data, symbol, color) {
-  hist(as.numeric(data[, paste0(symbol, ".Close")]),
-       main = paste(symbol, "Histogram"),
-       xlab = "Price",
-       col = color,
-       border = "black")
-}
-
-par(mfrow = c(2, 3))
-# Plot histograms for each symbol
-plot_histogram(AAPL, "AAPL", "blue")
-plot_histogram(ADBE, "ADBE", "purple")
-plot_histogram(AMD, "AMD", "red")
-plot_histogram(EBAY, "EBAY", "green")
-plot_histogram(HPQ, "HPQ", "orange")
-plot_histogram(IBM, "IBM", "brown")
+adbe_returns <- dailyReturn(ADBE$ADBE.Close)
+adbe_returns <- adbe_returns * 100
+basicStats(adbe_returns)
+log_adbe_returns <- log(adbe_returns + 1)
+log_adbe_returns <- log_adbe_returns * 100
+basicStats(log_adbe_returns)
 
 
-###############################################
-# Log Prices & Log returns
-###############################################
+qcom_returns <- dailyReturn(QCOM$QCOM.Close)
+qcom_returns <- qcom_returns * 100
+basicStats(qcom_returns)
+log_qcom_returns <- log(qcom_returns + 1)
+log_qcom_returns <- log_qcom_returns * 100
+basicStats(log_qcom_returns)
 
-# Calculate daily returns for AAPL
-aapl_returns <- diff(aapl_prices) / lag(aapl_prices, -1)
-aapl_returns <- na.omit(aapl_returns)
-aapl <- log(aapl_returns + 1)
+orcl_returns <- dailyReturn(ORCL$ORCL.Close)
+log_orcl_returns <- log(orcl_returns + 1)
+basicStats(log_orcl_returns)
 
-plot(aapl, type = "l", main = "AAPL Log Returns", xlab = "Date", ylab = "Log Price")
 
-mean(aapl)
-var(aapl)
-skewness(aapl)
-kurtosis(aapl)
-basicStats(aapl)
-t.test(aapl)
+typeof(symbol)
+head(MSFT)
+
+normalTest(log_msft_returns,method="jb")
+normalTest(log_amd_returns,method="jb")
+normalTest(log_adbe_returns,method="jb")
+normalTest(log_qcom_returns,method="jb")
+
+
 
 

@@ -1,0 +1,155 @@
+---
+title: "tidyfinance"
+author: "Andre Sealy"
+date: "2025-02-11"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+library(tidyquant)
+library(timetk)
+library(ggplot2)
+library(dplyr)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r }
+microsoft <- tq_get("MSFT",                    
+                  from = '2007-01-01',
+                  get = "stock.prices")
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r}
+microsoft %>%
+  ggplot(aes(x = date, y = adjusted)) +
+  geom_line() +
+  ggtitle("Microsoft since 2007") +
+  labs(x = "Date", "Price") +
+  scale_x_date(date_breaks = "years", date_labels = "%Y") +
+  labs(x = "Date", y = "Adjusted Price") +
+  theme_bw()
+```
+
+```{r}
+# Calculate daily returns
+
+microsoft_daily_returns <- microsoft %>%
+  tq_transmute(select = adjusted,           # this specifies which column to select   
+               mutate_fun = periodReturn,   # This specifies what to do with that column
+               period = "daily",      # This argument calculates Daily returns
+               col_rename = "msft_returns") # renames the column
+
+microsoft_monthly_returns <- microsoft %>%
+  tq_transmute(select = adjusted,
+               mutate_fun = periodReturn,
+               period = "monthly",      # This argument calculates Monthly returns
+               col_rename = "msft_returns")
+
+```
+
+```{r}
+microsoft_daily_returns %>%
+  ggplot(aes(x = date, y = msft_returns)) +
+  geom_line() +
+  theme_classic() +
+  labs(x = "Date", y = "Daily returns") +
+  ggtitle("Daily Returns for Microsoft") +
+  scale_x_date(date_breaks = "years", date_labels = "%Y") +
+  scale_y_continuous(breaks = seq(-0.5,0.6,0.05),
+                     labels = scales::percent) 
+```
+```{r}
+microsoft_daily_returns %>%
+  ggplot(aes(x = msft_returns)) +
+  geom_histogram(binwidth = 0.015) +
+  theme_classic() +
+  labs(x = "Daily returns") +
+  ggtitle("Daily Returns for Microsoft") +
+  scale_x_continuous(breaks = seq(-0.5,0.6,0.05),
+                     labels = scales::percent)
+```
+
+```{r}
+netflix_monthly_returns %>%
+  ggplot(aes(x = date, y = nflx_returns)) +
+  geom_bar(stat = "identity") +
+  theme_classic() +
+  labs(x = "Date", y = "Monthly returns") +
+  ggtitle("Monthly Returns for Netflix") +
+  geom_hline(yintercept = 0) +
+  scale_y_continuous(breaks = seq(-0.6,0.8,0.1),
+                     labels = scales::percent) +
+  scale_x_date(date_breaks = "years", date_labels = "%Y")
+```
+```{r}
+tickers <- c("ADBE", "AMD", "MSFT", "QCOM", "IBM", "EBAY", "ORCL", "GOOG") 
+
+# Dowload the stock price data
+
+multpl_stocks <- tq_get(tickers,
+                        from = "2007-01-01",
+                        get = "stock.prices")
+```
+
+
+```{r}
+multpl_stocks %>%
+  ggplot(aes(x = date, y = adjusted, color = symbol)) +
+  geom_line() +
+  ggtitle("Price chart for multiple stocks")
+```
+```{r}
+multpl_stocks %>%
+  ggplot(aes(x = date, y = adjusted)) +
+  geom_line() +
+  facet_wrap(~symbol, scales = "free_y") +  # facet_wrap is used to make diff frames
+  theme_classic() +       # using a new theme
+  labs(x = "Date", y = "Price") +
+  ggtitle("Price Chart Technology stocks")
+```
+```{r}
+multpl_stock_daily_returns <- multpl_stocks %>%
+  group_by(symbol) %>%                            # We are grouping the stocks by the stock symbol
+  tq_transmute(select = adjusted,
+               mutate_fun = periodReturn,
+               period = 'daily',
+               col_rename = 'returns')
+
+multpl_stock_daily_returns %>%
+  ggplot(aes(x = date, y = returns)) +
+  geom_line() +
+  geom_hline(yintercept = 0) +
+  facet_wrap(~symbol, scales = "free_y") +
+  scale_y_continuous(labels = scales::percent) +
+  ggtitle("Daily returns for FAANG stock") +
+  labs(x = "Date", y = "Returns") +
+  scale_color_brewer(palette = "Set2",
+                     name = "",
+                     guide = FALSE) +
+  theme_classic()
+```
+```{r}
+multpl_stock_daily_returns %>%
+  mutate(returns = if_else(date == "2007-01-31", 0, returns)) %>%
+  group_by(symbol) %>%  # Need to group multiple stocks
+  mutate(cr = cumprod(1 + returns)) %>%
+  mutate(cumulative_returns = cr - 1) %>%
+  ggplot(aes(x = date, y = cumulative_returns, color = symbol)) +
+  geom_line() +
+  labs(x = "Date", y = "Cumulative Returns") +
+  ggtitle("Cumulative returns for all since 2007") +
+  scale_y_continuous(labels = scales::percent) +
+  scale_color_brewer(palette = "Set1",
+                     name = "") +
+  theme_bw()
+```
+
