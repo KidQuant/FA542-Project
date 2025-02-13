@@ -1,0 +1,273 @@
+\documentclass[12pt]{article}
+\title{Project Report \#1}
+\author{Andre Sealy, Federica Malamisura, Swapnil Pant}
+\usepackage{amsmath, amsfonts, amssymb, amsthm,}
+\usepackage{tikz}
+\usetikzlibrary{matrix,positioning}
+\tikzset{bullet/.style={circle,fill,inner sep=2pt}}
+\usepackage{braket}
+\usepackage{bbold}
+\usepackage[margin=1.0in]{geometry}
+\usepackage{mathtools}
+\usepackage{xfrac}
+\usepackage{xcolor}
+\newcommand{\lam}{$\lambda$}
+\usepackage{pgfplots}
+\tikzset{My Style/.style={samples=100, thick}}
+\usepackage{graphicx}
+\usepackage{pgfplots}
+\usepackage{setspace}
+\usepackage{enumerate}
+\usepackage{hyperref}
+\usepackage{array}
+\usepackage{listings}
+\usepackage[official]{eurosym}
+\usepackage[shortlabels]{enumitem}
+\usepackage{booktabs}
+\usepackage{floatrow}
+\usepackage{listings}
+\floatsetup[table]{capposition=top}
+\usepackage{appendix}
+\usepackage{xcolor}
+\hypersetup{
+	colorlinks,
+	linkcolor={red!50!black},
+	citecolor={blue!50!black},
+	urlcolor={blue!80!black}
+}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+	backgroundcolor=\color{backcolour},   
+	commentstyle=\color{codegreen},
+	keywordstyle=\color{magenta},
+	numberstyle=\tiny\color{codegray},
+	stringstyle=\color{codepurple},
+	basicstyle=\ttfamily\footnotesize,
+	breakatwhitespace=false,         
+	breaklines=true,                 
+	captionpos=b,                    
+	keepspaces=true,                 
+	numbers=left,                    
+	numbersep=5pt,                  
+	showspaces=false,                
+	showstringspaces=false,
+	showtabs=false,                  
+	tabsize=2
+}
+\onehalfspacing
+
+\lstset{style=mystyle}
+
+\begin{document}
+	
+\maketitle
+
+\section{Overview of the Asset and the Market}
+
+The asset class for our time series analysis consists of equities primarily in the Technology sector. The reason for choosing the technology sector out of many industry classifications is multifaceted and involves numerous foundational considerations. First, we consider that tech stocks often have higher betas (meaning, they move with the market) on average, suggesting higher annualized volatility. Second, they are more sensitive to new information related to innovation cycles, such as new product releases, software updates, and research. Finally, we have the growth aspect, which involves the shifts in macroeconomic trends (such as interest rates), global demand, and supply chains. The border macroeconomic environment and the fundamentals make tech stocks an ideal candidate for time series analysis.
+
+\begin{table}[ht]
+	\centering
+	\caption{Market Comparisons of Technology Stocks (as of 2/10/25)}
+	\begin{tabular}[t]{lcccc}
+		\toprule
+		Company Name & Market Cap & Last Price & 1D Pct Chg& 1M Pct Chg \\
+		\midrule
+		%Apple Inc. (AAPL)* & 3.42T&227.65&0.01\%&-3.88\%\\
+		Microsoft Corp. (MSFT) & 3.06T &412.22&2.87\%&-1.61\%  \\
+		Qualcomm Inc. (QCOM) & 189.52B &171.36&2.02\%&9.16\%  \\
+		Adobe Inc. (ADBE) & 196.36B	&451.10&4.16\%&11.13\% \\	   
+		Advance Micro Devices (AMD) & 179.03B&110.48&2.71\%&-4.79\% \\
+		Cisco Systems Inc. (CSCO) & 250.16B & 62.81 & 0.87\% & 6.93\%\\
+		Intuit Inc. (INTU) & 164.27B & 586.84 & 1.38\% & -5.87\% \\ 				   
+		\bottomrule
+	\end{tabular}\label{tab:market_of_tech}
+\end{table}
+
+The colloquial definition of a "tech stock" is universal enough to conduct our analysis; however, not all are created equal. Technology companies offer clients and end users a wide range of features, products, and services. As such, we only consider tech stocks that are considered "peers" with respect to our reference target (or reference target being AAPL, considering we already have a good idea of how the asset behaves). We classify tech stocks based on the Global Industry Classification Standard (GICS), with a primary focus on the U.S. being the location of the domicile or headquarters. This classification includes information technology, hardware, and equipment.
+
+Table (\ref{tab:market_of_tech}) shows a sample of the following tech stocks that we have decided to include in our initial analysis. These stocks include Microsoft Corp (MSFT), Qualcomm Inc. (QCOM), Adobe Inc. (ADBE), Advance Micro Devices (AMD), Cisco System Inc. (CSCO), Intuit Inc. (INTU). This sample is organized based on market capitalization, which we can obviously see that MSFT is significantly larger the rest of our sample. We have also provided the last traded price, the one-day percentage change in price, as well as the 1-month percentage change.
+
+\section{Properties of the Time-Series}
+
+In this section, we will outline foundational descriptive statistics, which involve the statistical moments and distributions of our sample securities and time series analysis.
+
+\subsection{Descriptive statistics}
+First, we outline a few sample statistics for the stocks in our sample. These statistics involves the sample mean, denoted by
+\begin{equation}
+	\hat{\mu}_x=\frac{1}{T}\sum_{t=1}^{T}x_t,
+\end{equation}
+the sample standard deviation, denoted by,
+\begin{equation}
+	\hat{\sigma}_x=\sqrt{\frac{1}{T-1}\sum_{t=1}^{T}\left(x_t-\hat{\mu}_2\right)^2},
+\end{equation}
+the sample skewness, denoted by
+\begin{equation}
+	\hat{S}(x)=\frac{1}{\left(T-1\right)\hat{\sigma}^3_x}\sum_{t=1}^{T}\left(x_t-\hat{\mu}_x\right)^3,
+\end{equation}
+and the sample kurtosis (excess kurtosis), denoted by
+\begin{equation}
+	\hat{K}(x)=\frac{1}{\left(T-1\right)\hat{\sigma}^4_x}\sum_{t=1}^{T}\left(x_t-\hat{\sigma}_x\right)^4.
+\end{equation}
+The sample mean, $\hat{\mu}_x$ represents the daily average simple (or log) returns, where $T$ are the number of days in the sample. The sample standard deviation, denoted by $\hat{\sigma}_x$, represents the daily realized volatility, the universal risk measurement. Table (\ref{tab:descriptive}) shows the descriptive statistics of the tech stocks in our sample of the daily sample returns. The start date of our analysis is January 3rd, 2007, which gives us a time interval of roughly 18 years. In addition to the sample mean, standard deviation, skewness, and excess kurtosis, we have also decided to include the minimum and maximum prices within this time period for a better perspective.
+\begin{table}[ht]
+	\centering
+	\caption{Descriptive statistics of Tech Stocks (\textit{Daily Simple Returns \%})}
+	\begin{tabular}[t]{lcccccc}
+		\toprule
+		Security & Mean ($\hat{\mu}_x$) & Std Dev ($\hat{\sigma}_x$) & Skewness ($\hat{S}(x)$) & Kurtosis ($\hat{K}(x)$) &Min&Max \\
+		\midrule
+		%Apple Inc. (AAPL)* & 3.42T&227.65&0.01\%&-3.88\%\\
+		MSFT & 0.07 & 1.76 & 0.27 & 9.17&-14.73&18.60  \\
+		QCOM & 0.05 & 2.17 & 0.27 & 9.53 &-15.25&23.20 \\
+		ADBE & 0.07	& 2.16 &-0.12 & 8.66 & -19.03 & 17.71 \\	   
+		AMD  & 0.10 & 3.66 & 0.78 & 12.39&-24.22&52.29 \\				   
+		CSCO  & 0.03 & 1.77 & -0.22 & 11.56 &-16.21&15.95 \\		
+		INTU  & 0.08 & 1.91 & 0.25 & 8.49&-14.47&20.08 \\
+		\bottomrule
+	\end{tabular}\label{tab:descriptive}
+\end{table}
+
+As we can see, MSFT has the smallest sample standard deviation $\hat{\sigma}_x$ out of all the securities in our sample despite having roughly similar daily simple returns. From an investment perspective, AMD provides the greatest return per unit of risk. The returns between our sample securities are roughly similar when we look at daily log returns in Table (\ref{tab:log_descriptive}).
+
+The sample skewness measures the asymmetry of a probability distribution around the sample mean. It helps determine whether our sample is skewed more towards one side of the distribution. If the sample skewness, $\hat{S}(x)\approx 0,$ the distribution is symmetrical. The securities MSFT, QCOM, CSCO, INTU and ABDE are roughly symmetrical, as the skewness is approximately 0. 
+
+On the hand, the sample kurtosis measures how heavy the tails of the probability distribution are, which helps assess the presence of extreme values and the frequency of their occurrence. A normal distribution has a sample kurtosis of  $\hat{K}(x)\approx 3$, which indicates a normal distribution. All of the securities in our sample have extremely high kurtosis, which is natural for equities, considering financial markets experience extreme price movements more frequently than a normal distribution would predict. Financial markets also show periods of high and low volatility; when volatility spikes, returns tend to have more extreme values.
+
+Considering the sample skewness, AMD is much further away from 0. There is some slight positive skew for MSFT, QCOM, and INTU and some slight negative skew for ADBE and CSCO. We do not have a single sample statistic that we can use to differentiate skewed versus unskewed. However, we can test for skewness using the Jarque and Bera test for normality.
+
+The Jarque-Bera (JB) test is a statistical test used to check whether a dataset follows a normal distribution. It does this by examining the skewness and kurtosis of the dataset with the following formula:
+\begin{equation}
+	JB= \underbrace{\frac{\hat{S}^2(r)}{\sqrt{\sfrac{6}{T}}}}_{\textit{skewness}}  +\overbrace{\frac{[\hat{K}(r)-3]^2}{\sfrac{24}{T}}}^{\textit{kurtosis}}
+\end{equation}
+which is distributed as a chi-square, $\mathcal{X}^2$, random variable with 2 degrees of freedom. Given the sample of returns, $\lbrace r_1,\ldots,r_T\rbrace$, to test the skewness of the returns, we consider the following hypothesis test
+\[
+\begin{aligned}
+	H_0&:S(r)= 0\\
+	H_a&:S(r)\neq 0\\
+\end{aligned}
+\]
+where the $t-$statistic is 
+\begin{equation}
+	t=\frac{\hat{S}(r)}{\sqrt{\sfrac{6}{T}}}
+\end{equation}
+We would also need to conduct a hypothesis test for the excess kurtosis, which is
+\[
+\begin{aligned}
+	H_0&:K(r)-3= 0\\
+	H_a&:K(r)-3\neq 0\\
+\end{aligned}
+\]
+where the $t-$statistics is the following:
+\begin{equation}
+	t=\frac{\hat{K}(r-3)}{\sqrt{\sfrac{24}{T}}}
+\end{equation}
+We provide the JB-test for statistical normality with the skewness, $\hat{S}(x)$, kurtosis, $\hat{K}(x)$, t-statistic, $\mathcal{X}^2$, and p-values. We reject the null-hypothesis, $H_0$ of normality if the $p-$value of the JB statistic is less than the significance level. As the Table (\ref*{tab:jbtest}) shows, the $p$-values of the JB-test for our sample securities are significantly below the 5\% significance level, which indicates that MSFT, QCOM, AMD are skewed to the right (positively skewed) and ADBE are negatively skewed.
+\begin{table}[ht]
+	\centering
+	\caption{Jarque-Bera Statistical Test for Normality for log daily returns}
+	\begin{tabular}[t]{lcccc}
+		\toprule
+		Security & Skewness ($\hat{S}(x)$) & Kurtosis ($\hat{K}(x)$) & $t$-statistic ($\mathcal{X}^2$) & $p$-value \\
+		\midrule
+		%Apple Inc. (AAPL)* & 3.42T&227.65&0.01\%&-3.88\%\\
+		MSFT &  0.27 & 9.17  & 14325.07 & 2.2e-16  \\
+		QCOM &  0.27 & 9.53  & 14733.69 & 2.2e-16 \\
+		ADBE & -0.12 & 8.66  & 16759.00 & 2.2e-16 \\	   
+		AMD  &  0.78 & 12.39 & 11128.07 & 2.2e-16 \\				   
+		CSCO  &  -0.22 & 11.59 & 28331.08 & 2.2e-16 \\					
+		INTU  &  0.25 & 8.49 & 11128.07 & 2.2e-16 \\					
+		\bottomrule
+	\end{tabular}\label{tab:jbtest}
+\end{table}
+
+\subsection{Visualization}
+We first begin our analysis by looking at cumulative returns, an essential part of time series analysis. Unlike daily or periodic returns, which can be volatile, cumulative returns smooth out fluctuations and show the overall trends of a time series. They also help compare the growth of our asset class over different time horizons and identify long-term trends in the market. Cumulative returns will serve as the basis for other predicting and forecasting techniques.
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.9\linewidth]{plots/cumulative_returns.png}
+	\caption{Cumulative Returns for the sample securities}
+	\label{fig:cum_returns}
+\end{figure}
+Figure (\ref{fig:cum_returns}) shows the cumulative returns for the securities in our sample: ADBE, AMD, MSFT, and QCOM. As we can see, within a 17-year period, INTU received the greatest cumulative return of 21.12\%; MSFT has a close second with a cumulative return of 18.25\%; from there, the rest are far behind. As expected, this is inconsistent with the descriptive statistics we have provided earlier. Cumulative returns ignore risk and measure the total percentage return, whereas metrics such as the standard deviation, $\hat{\sigma}_x$, and kurtosis, $\hat{K}(x)$, account for risk. Despite AMD and ADBE having larger returns on a risk-adjusted basis, INTU and MSFT seems to perform better than their peers. To analyze this further, we need to employ more time series techniques to capture volatility.
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=1\linewidth]{plots/daily_returns_alt.png}
+	\caption{Daily log returns for sample securities}
+	\label{fig:daily_log_returns}
+\end{figure}
+The idea of studying volatility is that the returns of our asset $\lbrace r_t\rbrace$ have a serial correlation, or it may merely be stationary. Figure (\ref{fig:daily_log_returns}) shows the daily log returns of our sample securities. There appears to be a high degree of stationary among our sample securities, each with different clusters of volatility around specific information shows (e.g., MSFT was the most volatile during the 2008 Financial Crisis; however, ADBE was the most volatile during the 2020 Pandemic). Since log returns often appear random and volatile, it is difficult to distinguish between stationary and non-stationary processes visually. We also have the concept of drift and a change in variance. To deal with this problem, we implement the an Autocorrelation Function (ACF).
+
+The Autocorrelation Function (ACF) measures the correlation between a time series and its own past values at different lags. It helps identify patterns, dependencies, and stationarity in time series data. When considering a weakly stationary return series, $r_t$, the linear dependence between $r_t$ and past values of $t_{t-i}$ is called the lag-$\ell$ autocorrelation of $r_t$, denoted by the following:
+\begin{equation}
+	\hat{\rho}_\ell=\frac{\sum_{t=\ell+1}^{T}\left(r_t-\bar{r}\right)\left(r_{t-\ell}-\bar{r}\right)}{\sum_{t=1}^{T}\left(r_t-\bar{r}\right)^2},\quad 0\leq\ell<T-1
+\end{equation}
+For testing several autocorrelations jointly, we have the Ljung and Box test, denoted by,
+\begin{equation}
+	\mathcal{Q}(m)=T(T+2)\sum_{\ell=1}^{m}\frac{\hat{\rho}_\ell^2}{T-\ell}
+\end{equation}
+The hypothesis test for Ljung and Box is established as follows:
+\[
+\begin{aligned}
+	H_0&:\rho_1=\cdots=\rho_m=0\\
+	H_a&:\rho_i\neq 0
+\end{aligned}
+\]
+for some $i\in\lbrace1,\ldots,m\rbrace$. We assume that $\lbrace r_t\rbrace$ is an iid sequence and $\mathcal{Q}^*(m)$ is a chi-squared random variable, $\mathcal{X}$, with $m$ degrees of freedom. The decision rule is to reject $H_0$ if $\mathcal{Q}(m)>\mathcal{X}^2_\alpha$, where $\mathcal{X}^2_\alpha$ denotes the $100\left(1-\alpha\right)$th percentile of a chi-squared distribution. 
+
+Figure (\ref{fig:acf_plot}) shows the sample autocorrelation functions of the monthly log returns from January 2007 to November 2025. We have used a maximum of 20 lags. In each plot, two horizontal dashed lines denote two standard error limits of ACF. The sample ACFs or the MSFT plot are very close to each other, and they suggest that the serial correlations of monthly MSFT log stock returns are very small, if any. The sample ACFs are all within their two standard error limits, indicating that they are not significantly different from zero at the 5\% level.
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.7\linewidth]{plots/acf_monthly_returns.png}
+	\caption{ACF Plots of log monthly returns of sample securities}
+	\label{fig:acf_plot}
+\end{figure}
+Regarding the log monthly returns for the other securities in our sample, we find there is at least one lag that determines a significant serial correlation with previous returns. For QCOM, this occurs at lag 17; for ADBE, it's lags 6 and 12; for QCOM, it's lags 19 and 20; for CSCO, it's lags 9 and 14; and for INTU, it's lag 18. From looking at the ACF plots, it would appear that these lags barely reach the rejection threshold of 2 times the standard error. However, we can perform the Ljung-Box statistic determine if there are some significant serial correlations at the 5\% level for all return series. The Ljung-Box statistic gives us the following:
+\begin{itemize}
+	\item AMD: $\mathcal{Q}(17)=19.044$, $p-$value=0.326
+	\item ADBE: $\mathcal{Q}(6)=10.404$, $p-$value=0.1086; $\mathcal{Q}(12)=20.765$, $p-$value=0.05393
+	\item QCOM: $\mathcal{Q}(19)=29.27$, $p-$value=0.06185; $\mathcal{Q}(20)=34.939$, $p-$value=0.02043
+	\item CSCO: $\mathcal{Q}(9)=14.675$, $p-$value=0.1003; $\mathcal{Q}(14)=20.773$, $p-$value=0.1076
+	\item INTU: $\mathcal{Q}(9)=20.678$, $p-$value=0.296;
+\end{itemize}
+As we can see from the test statistics and the $p$-values, all but one show a significant serial correlation with monthly log returns, and that security is QCOM. What we can interpret from this data, at least for long monthly returns, is that there is no significant serial correlation. It may be worth using a more frequent observation series, such as daily.
+
+We have also looked at the Partial Autocorrelation Function (PACF) of the log monthly returns. The PACF is used to directly measure the relationship between a time series and its past values at different lags while removing the influence of the intermediate lags. Unlike the ACF, which includes direct and indirect correlations, the PACF isolates the pure effect of each lag on the present value.
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.8\linewidth]{plots/pacf_monthly_returns.png}
+	\caption{PACF Plots of log monthly returns of sample securities}
+	\label{fig:pacf_plot}
+\end{figure}
+Figure (\ref{fig:pacf_plot})shows the PACF for the log monthly returns for our sample securities. We have used a maximum of 20 lags. After accounting for intermediate lags, each bar in the PACF plot represents the correlation between the time series and its lagged version. The dashed lines represent the 95\% confidence interval. Any bar extending beyond these lines is statistically significant. ADBE and CSCO all appear to have significant lags.
+
+ADBE have significant lags at month 6 and month 12; meaning the returns 6 and 12 months have a direct influence on the current month returns. This suggest that monthly log returns of ADBE may have some seasonal dependency. With CSCO, we have significant lags at month 6 and 14, suggesting the log monthly returns from 6 and 14 months ago have a direct influence on the log monthly returns in the current month.
+\newpage
+\begin{appendices}
+\section{Appendix}
+\subsection{Tables}
+\begin{table}[ht]
+	\centering
+	\caption{Descriptive statistics of Tech Stocks (\textit{Daily Log Returns \%})}
+	\begin{tabular}[t]{lcccccc}
+		\toprule
+		Security & Mean ($\hat{\mu}_x$) & Std Dev ($\hat{\sigma}_x$) & Skewness ($\hat{S}(x)$) & Kurtosis ($\hat{K}(x)$) &Min&Max \\
+		\midrule
+		%Apple Inc. (AAPL)* & 3.42T&227.65&0.01\%&-3.88\%\\
+		MSFT & 0.15 & 0.97 &-1.53 & 4.99 &-6.57  &2.97  \\
+		QCOM & 0.21 & 1.06 &-1.53 & 5.03 &-16.54 &3.18 \\	
+		ADBE & 0.27 & 0.96 &-1.34 & 4.04 &-7.24  &2.92 \\
+		AMD  & 0.56 & 1.22 &-2.20 & 14.82 &-13.86 &3.97 \\		
+		CSCO & 0.12 & 0.96 &-1.59 & 5.53 &-6.62  &2.83 \\
+		INTU & 0.21 & 0.94 &-1.54 & 5.68 &-7.81  &3.04 	\\	   
+		\bottomrule
+	\end{tabular}\label{tab:log_descriptive}
+\end{table}
+\end{appendices}
+	
+\end{document}

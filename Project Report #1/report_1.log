@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 23.1) (preloaded format=pdflatex 2023.4.13)  11 FEB 2025 23:49
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 23.1) (preloaded format=pdflatex 2023.4.13)  13 FEB 2025 13:21
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**./document.tex
-(document.tex
+**./report_1.tex
+(report_1.tex
 LaTeX2e <2022-11-01> patch level 1
 L3 programming layer <2023-03-30>
 (C:\Users\drebi\AppData\Local\Programs\MiKTeX\tex/latex/base\article.cls
@@ -971,8 +971,8 @@ Package: appendix 2020/02/08 v1.2c extra appendix facilities
 )
 Package hyperref Info: Option `colorlinks' set `true' on input line 37.
 
-(document.aux)
-\openout1 = `document.aux'.
+(report_1.aux)
+\openout1 = `report_1.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 66.
 LaTeX Font Info:    ... okay on input line 66.
@@ -1059,9 +1059,9 @@ your preamble.
  on input line 66.
 
 Package hyperref Info: Link coloring ON on input line 66.
-(document.out) (document.out)
+(report_1.out) (report_1.out)
 \@outlinefile=\write4
-\openout4 = `document.out'.
+\openout4 = `report_1.out'.
 
 \c@lstlisting=\count349
 Package caption Info: Begin \AtBeginDocument code.
@@ -1081,61 +1081,91 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 [1
 
 {C:/Users/drebi/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}]
-Overfull \hbox (1.0893pt too wide) in paragraph at lines 119--130
+Overfull \hbox (1.0893pt too wide) in paragraph at lines 121--134
  [][][] 
  []
 
-[2]
-LaTeX Font Info:    Calculating math sizes for size <8.4> on input line 142.
+[2] [3]
+LaTeX Font Info:    Calculating math sizes for size <8.4> on input line 146.
 
 
 LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <4.2> not available
-(Font)              size <5> substituted on input line 142.
+(Font)              size <5> substituted on input line 146.
 
 
 LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <4.2> not available
-(Font)              size <5> substituted on input line 142.
+(Font)              size <5> substituted on input line 146.
 
 
 LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <4.2> not available
-(Font)              size <5> substituted on input line 142.
+(Font)              size <5> substituted on input line 146.
 
-[3] [4] [5]
-Overfull \hbox (1.0893pt too wide) in paragraph at lines 191--202
- [][][] 
- []
+<plots/cumulative_returns.png, id=62, 1158.3275pt x 561.09625pt>
+File: plots/cumulative_returns.png Graphic file (type png)
+<use plots/cumulative_returns.png>
+Package pdftex.def Info: plots/cumulative_returns.png  used on input line 193.
+(pdftex.def)             Requested size: 422.77664pt x 204.79414pt.
+<plots/daily_returns_alt.png, id=65, 526.96875pt x 325.215pt>
+File: plots/daily_returns_alt.png Graphic file (type png)
+<use plots/daily_returns_alt.png>
+Package pdftex.def Info: plots/daily_returns_alt.png  used on input line 200.
+(pdftex.def)             Requested size: 469.75502pt x 289.92178pt.
+[4] [5 <./plots/cumulative_returns.png>] [6 <./plots/daily_returns_alt.png>]
+<plots/acf_monthly_returns.png, id=90, 398.99063pt x 413.29407pt>
+File: plots/acf_monthly_returns.png Graphic file (type png)
+<use plots/acf_monthly_returns.png>
+Package pdftex.def Info: plots/acf_monthly_returns.png  used on input line 226.
 
-[6] (document.aux)
+(pdftex.def)             Requested size: 328.82707pt x 340.63126pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[7]
+<plots/pacf_monthly_returns.png, id=100, 398.99063pt x 413.29407pt>
+File: plots/pacf_monthly_returns.png Graphic file (type png)
+<use plots/pacf_monthly_returns.png>
+Package pdftex.def Info: plots/pacf_monthly_returns.png  used on input line 243
+.
+(pdftex.def)             Requested size: 362.80807pt x 375.80544pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[8 <./plots/acf_monthly_returns.png>] [9 <./plots/pacf_monthly_returns.png>]
+[10] (report_1.aux)
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 2.90001pt have occurred.
 
-Package rerunfilecheck Info: File `document.out' has not changed.
+Package rerunfilecheck Info: File `report_1.out' has not changed.
 (rerunfilecheck)             Checksum: 3A0B9A6CEEFA8745805BA826B8D4EE28;908.
  ) 
 Here is how much of TeX's memory you used:
- 35250 strings out of 476326
- 817116 string characters out of 5787722
- 1864660 words of memory out of 5000000
- 55104 multiletter control sequences out of 15000+600000
- 527582 words of font info for 95 fonts, out of 8000000 for 9000
+ 35301 strings out of 476326
+ 818274 string characters out of 5787722
+ 1867660 words of memory out of 5000000
+ 55137 multiletter control sequences out of 15000+600000
+ 527919 words of font info for 96 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 102i,20n,104p,846b,609s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<C:/Users/drebi/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/
-cmbx12.pfb><C:/Users/drebi/AppData/Local/Programs/MiKTeX/fonts/type1/public/ams
-fonts/cm/cmex10.pfb><C:/Users/drebi/AppData/Local/Programs/MiKTeX/fonts/type1/p
-ublic/amsfonts/cm/cmmi12.pfb><C:/Users/drebi/AppData/Local/Programs/MiKTeX/font
-s/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/drebi/AppData/Local/Programs/MiK
-TeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/drebi/AppData/Local/Prog
-rams/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/drebi/AppData/Lo
-cal/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/drebi/App
-Data/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/
-drebi/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti12.pfb><
-C:/Users/drebi/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmt
-i8.pfb>
-Output written on document.pdf (6 pages, 140301 bytes).
+ 102i,20n,104p,847b,609s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ <C:\Users\drebi\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm
+1200.pk><C:/Users/drebi/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfon
+ts/cm/cmbx12.pfb><C:/Users/drebi/AppData/Local/Programs/MiKTeX/fonts/type1/publ
+ic/amsfonts/cm/cmex10.pfb><C:/Users/drebi/AppData/Local/Programs/MiKTeX/fonts/t
+ype1/public/amsfonts/cm/cmmi12.pfb><C:/Users/drebi/AppData/Local/Programs/MiKTe
+X/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/drebi/AppData/Local/Progra
+ms/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/drebi/AppData/Loca
+l/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/drebi/AppD
+ata/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/dre
+bi/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/
+Users/drebi/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.
+pfb><C:/Users/drebi/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/c
+m/cmti12.pfb><C:/Users/drebi/AppData/Local/Programs/MiKTeX/fonts/type1/public/a
+msfonts/cm/cmti8.pfb>
+Output written on report_1.pdf (10 pages, 278396 bytes).
 PDF statistics:
- 127 PDF objects out of 1000 (max. 8388607)
- 24 named destinations out of 1000 (max. 500000)
- 61 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 176 PDF objects out of 1000 (max. 8388607)
+ 34 named destinations out of 1000 (max. 500000)
+ 81 words of extra memory for PDF output out of 10000 (max. 10000000)
 

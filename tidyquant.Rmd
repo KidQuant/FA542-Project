@@ -91,7 +91,7 @@ netflix_monthly_returns %>%
   scale_x_date(date_breaks = "years", date_labels = "%Y")
 ```
 ```{r}
-tickers <- c("ADBE", "AMD", "MSFT", "QCOM", "IBM", "EBAY", "ORCL", "GOOG") 
+tickers <- c("ADBE", "AMD", "MSFT", "QCOM", "CSCO", "INTU")
 
 # Dowload the stock price data
 
@@ -130,7 +130,6 @@ multpl_stock_daily_returns %>%
   geom_hline(yintercept = 0) +
   facet_wrap(~symbol, scales = "free_y") +
   scale_y_continuous(labels = scales::percent) +
-  ggtitle("Daily returns for FAANG stock") +
   labs(x = "Date", y = "Returns") +
   scale_color_brewer(palette = "Set2",
                      name = "",
