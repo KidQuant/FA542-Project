@@ -78,7 +78,8 @@ The asset class for our time series analysis consists of equities primarily in t
 		\toprule
 		Company Name & Market Cap & Last Price & 1D Pct Chg& 1M Pct Chg \\
 		\midrule
-		%Apple Inc. (AAPL)* & 3.42T&227.65&0.01\%&-3.88\%\\
+		Apple Inc. (AAPL)* & 3.42T&227.65&0.01\%&-3.88\%\\
+		NVIDIA Cop. (NVDA) & 3.27T&133.57&2.87\%&-1.72\% \\
 		Microsoft Corp. (MSFT) & 3.06T &412.22&2.87\%&-1.61\%  \\
 		Qualcomm Inc. (QCOM) & 189.52B &171.36&2.02\%&9.16\%  \\
 		Adobe Inc. (ADBE) & 196.36B	&451.10&4.16\%&11.13\% \\	   
@@ -122,8 +123,9 @@ The sample mean, $\hat{\mu}_x$ represents the daily average simple (or log) retu
 		\toprule
 		Security & Mean ($\hat{\mu}_x$) & Std Dev ($\hat{\sigma}_x$) & Skewness ($\hat{S}(x)$) & Kurtosis ($\hat{K}(x)$) &Min&Max \\
 		\midrule
-		%Apple Inc. (AAPL)* & 3.42T&227.65&0.01\%&-3.88\%\\
-		MSFT & 0.07 & 1.76 & 0.27 & 9.17&-14.73&18.60  \\
+		AAPL & 0.11 & 1.97 & -0.11 & 5.96 & -17.91 & 13.90\%\\
+		NVDA & 0.16 & 3.11 & 0.13 & 7.95 &-30.72&29.80 \\
+		MSFT & 0.07 & 1.76 & 0.27 & 9.17 &-14.73&18.60  \\
 		QCOM & 0.05 & 2.17 & 0.27 & 9.53 &-15.25&23.20 \\
 		ADBE & 0.07	& 2.16 &-0.12 & 8.66 & -19.03 & 17.71 \\	   
 		AMD  & 0.10 & 3.66 & 0.78 & 12.39&-24.22&52.29 \\				   
@@ -133,9 +135,9 @@ The sample mean, $\hat{\mu}_x$ represents the daily average simple (or log) retu
 	\end{tabular}\label{tab:descriptive}
 \end{table}
 
-As we can see, MSFT has the smallest sample standard deviation $\hat{\sigma}_x$ out of all the securities in our sample despite having roughly similar daily simple returns. From an investment perspective, AMD provides the greatest return per unit of risk. The returns between our sample securities are roughly similar when we look at daily log returns in Table (\ref{tab:log_descriptive}).
+As we can see, MSFT and CSCO have the smallest sample standard deviation $\hat{\sigma}_x$ out of all the securities in our sample despite having roughly similar daily simple returns. From an investment perspective, AAPL provides the greatest return per unit of risk. The returns between our sample securities are roughly similar when we look at daily log returns in Table (\ref{tab:log_descriptive}).
 
-The sample skewness measures the asymmetry of a probability distribution around the sample mean. It helps determine whether our sample is skewed more towards one side of the distribution. If the sample skewness, $\hat{S}(x)\approx 0,$ the distribution is symmetrical. The securities MSFT, QCOM, CSCO, INTU and ABDE are roughly symmetrical, as the skewness is approximately 0. 
+The sample skewness measures the asymmetry of a probability distribution around the sample mean. It helps determine whether our sample is skewed more towards one side of the distribution. If the sample skewness, $\hat{S}(x)\approx 0,$ the distribution is symmetrical. Based on skewness, AAPL, NVDA, MSFT, QCOM, CSCO, INTU and ABDE are all roughly symmetrical, as the skewness is approximately 0. 
 
 On the hand, the sample kurtosis measures how heavy the tails of the probability distribution are, which helps assess the presence of extreme values and the frequency of their occurrence. A normal distribution has a sample kurtosis of  $\hat{K}(x)\approx 3$, which indicates a normal distribution. All of the securities in our sample have extremely high kurtosis, which is natural for equities, considering financial markets experience extreme price movements more frequently than a normal distribution would predict. Financial markets also show periods of high and low volatility; when volatility spikes, returns tend to have more extreme values.
 
@@ -175,11 +177,12 @@ We provide the JB-test for statistical normality with the skewness, $\hat{S}(x)$
 		\toprule
 		Security & Skewness ($\hat{S}(x)$) & Kurtosis ($\hat{K}(x)$) & $t$-statistic ($\mathcal{X}^2$) & $p$-value \\
 		\midrule
-		%Apple Inc. (AAPL)* & 3.42T&227.65&0.01\%&-3.88\%\\
-		MSFT &  0.27 & 9.17  & 14325.07 & 2.2e-16  \\
-		QCOM &  0.27 & 9.53  & 14733.69 & 2.2e-16 \\
-		ADBE & -0.12 & 8.66  & 16759.00 & 2.2e-16 \\	   
-		AMD  &  0.78 & 12.39 & 11128.07 & 2.2e-16 \\				   
+		AAPL & 0.11 & 1.97 & 6784.85 & 2.2e-16\\
+		NVDA & 0.13 & 7.95 & 12052.68 & 2.2e-16\\		
+		MSFT & 0.27 & 9.17 & 14325.07 & 2.2e-16  \\
+		QCOM & 0.27 & 9.53 & 14733.69 & 2.2e-16 \\
+		ADBE & -0.12 & 8.66 & 16759.00 & 2.2e-16 \\	   
+		AMD  & 0.78 & 12.39 & 11128.07 & 2.2e-16 \\				   
 		CSCO  &  -0.22 & 11.59 & 28331.08 & 2.2e-16 \\					
 		INTU  &  0.25 & 8.49 & 11128.07 & 2.2e-16 \\					
 		\bottomrule
@@ -194,7 +197,7 @@ We first begin our analysis by looking at cumulative returns, an essential part 
 	\caption{Cumulative Returns for the sample securities}
 	\label{fig:cum_returns}
 \end{figure}
-Figure (\ref{fig:cum_returns}) shows the cumulative returns for the securities in our sample: ADBE, AMD, MSFT, and QCOM. As we can see, within a 17-year period, INTU received the greatest cumulative return of 21.12\%; MSFT has a close second with a cumulative return of 18.25\%; from there, the rest are far behind. As expected, this is inconsistent with the descriptive statistics we have provided earlier. Cumulative returns ignore risk and measure the total percentage return, whereas metrics such as the standard deviation, $\hat{\sigma}_x$, and kurtosis, $\hat{K}(x)$, account for risk. Despite AMD and ADBE having larger returns on a risk-adjusted basis, INTU and MSFT seems to perform better than their peers. To analyze this further, we need to employ more time series techniques to capture volatility.
+Figure (\ref{fig:cum_returns}) shows the cumulative returns for the securities in our sample: ADBE, AMD, MSFT, and QCOM (as AAPL and NVDA are large cap stocks with very large momentum, visualizations for them are presented in the appendix). As we can see, within a 17-year period, INTU received the greatest cumulative return of 21.12\%; MSFT has a close second with a cumulative return of 18.25\%; from there, the rest are far behind. As expected, this is inconsistent with the descriptive statistics we have provided earlier. Cumulative returns ignore risk and measure the total percentage return, whereas metrics such as the standard deviation, $\hat{\sigma}_x$, and kurtosis, $\hat{K}(x)$, account for risk. Despite AMD and ADBE having larger returns on a risk-adjusted basis, INTU and MSFT seems to perform better than their peers. To analyze this further, we need to employ more time series techniques to capture volatility.
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=1\linewidth]{plots/daily_returns_alt.png}
@@ -221,21 +224,24 @@ The hypothesis test for Ljung and Box is established as follows:
 for some $i\in\lbrace1,\ldots,m\rbrace$. We assume that $\lbrace r_t\rbrace$ is an iid sequence and $\mathcal{Q}^*(m)$ is a chi-squared random variable, $\mathcal{X}$, with $m$ degrees of freedom. The decision rule is to reject $H_0$ if $\mathcal{Q}(m)>\mathcal{X}^2_\alpha$, where $\mathcal{X}^2_\alpha$ denotes the $100\left(1-\alpha\right)$th percentile of a chi-squared distribution. 
 
 Figure (\ref{fig:acf_plot}) shows the sample autocorrelation functions of the monthly log returns from January 2007 to November 2025. We have used a maximum of 20 lags. In each plot, two horizontal dashed lines denote two standard error limits of ACF. The sample ACFs or the MSFT plot are very close to each other, and they suggest that the serial correlations of monthly MSFT log stock returns are very small, if any. The sample ACFs are all within their two standard error limits, indicating that they are not significantly different from zero at the 5\% level.
+
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.7\linewidth]{plots/acf_monthly_returns.png}
 	\caption{ACF Plots of log monthly returns of sample securities}
 	\label{fig:acf_plot}
 \end{figure}
-Regarding the log monthly returns for the other securities in our sample, we find there is at least one lag that determines a significant serial correlation with previous returns. For QCOM, this occurs at lag 17; for ADBE, it's lags 6 and 12; for QCOM, it's lags 19 and 20; for CSCO, it's lags 9 and 14; and for INTU, it's lag 18. From looking at the ACF plots, it would appear that these lags barely reach the rejection threshold of 2 times the standard error. However, we can perform the Ljung-Box statistic determine if there are some significant serial correlations at the 5\% level for all return series. The Ljung-Box statistic gives us the following:
+
+Regarding the log monthly returns for the other securities in our sample, we find there is at least one lag that determines a significant serial correlation with previous returns. For QCOM, this occurs at lag 17; for ADBE, it's lags 6 and 12; for QCOM, it's lags 19 and 20; for CSCO, it's lags 9 and 14; for INTU, it's lag 18; and for NVDA, it's lag 4. From looking at the ACF plots, it would appear that these lags barely reach the rejection threshold of 2 times the standard error. However, we can perform the Ljung-Box statistic determine if there are some significant serial correlations at the 5\% level for all return series. The Ljung-Box statistic gives us the following:
 \begin{itemize}
 	\item AMD: $\mathcal{Q}(17)=19.044$, $p-$value=0.326
 	\item ADBE: $\mathcal{Q}(6)=10.404$, $p-$value=0.1086; $\mathcal{Q}(12)=20.765$, $p-$value=0.05393
 	\item QCOM: $\mathcal{Q}(19)=29.27$, $p-$value=0.06185; $\mathcal{Q}(20)=34.939$, $p-$value=0.02043
 	\item CSCO: $\mathcal{Q}(9)=14.675$, $p-$value=0.1003; $\mathcal{Q}(14)=20.773$, $p-$value=0.1076
 	\item INTU: $\mathcal{Q}(9)=20.678$, $p-$value=0.296;
+	\item NVDA: $\mathcal{Q}(4)=10.826$, $p-$value=0.028;
 \end{itemize}
-As we can see from the test statistics and the $p$-values, all but one show a significant serial correlation with monthly log returns, and that security is QCOM. What we can interpret from this data, at least for long monthly returns, is that there is no significant serial correlation. It may be worth using a more frequent observation series, such as daily.
+As we can see from the test statistics and the $p$-values, the only securities with a significant serial correlation with monthly log returns are QCOM and NVDA. What we can interpret from this data, at least for long monthly returns, is that there is no significant serial correlation. It may be worth using a more frequent observation series, such as daily.
 
 We have also looked at the Partial Autocorrelation Function (PACF) of the log monthly returns. The PACF is used to directly measure the relationship between a time series and its past values at different lags while removing the influence of the intermediate lags. Unlike the ACF, which includes direct and indirect correlations, the PACF isolates the pure effect of each lag on the present value.
 \begin{figure}[h]
@@ -268,6 +274,31 @@ ADBE have significant lags at month 6 and month 12; meaning the returns 6 and 12
 		\bottomrule
 	\end{tabular}\label{tab:log_descriptive}
 \end{table}
+\newpage
+\subsection{Figures}
 \end{appendices}
-	
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.8\linewidth]{plots/cumulative_returns_appl_nvda.png}
+	\caption{Cumulative Returns for AAPL and NVDA}
+\end{figure}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.8\linewidth]{plots/aapl_nvda_returns.png}
+	\caption{Simple daily returns for AAPL and NVDA}
+\end{figure}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.6\linewidth]{plots/acf_aapl_nvda.png}
+	\caption{ACF for monthly log returns for AAPL and NVDA}
+\end{figure}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.6\linewidth]{plots/pacf_aapl_nvda.png}
+	\caption{PACF for monthly log returns for AAPL and NVDA}
+\end{figure}
+
 \end{document}

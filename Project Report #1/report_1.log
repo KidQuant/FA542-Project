@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 23.1) (preloaded format=pdflatex 2023.4.13)  13 FEB 2025 13:21
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 23.1) (preloaded format=pdflatex 2023.4.13)  25 MAR 2025 21:32
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1081,40 +1081,40 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 [1
 
 {C:/Users/drebi/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}]
-Overfull \hbox (1.0893pt too wide) in paragraph at lines 121--134
+Overfull \hbox (10.88086pt too wide) in paragraph at lines 122--136
  [][][] 
  []
 
 [2] [3]
-LaTeX Font Info:    Calculating math sizes for size <8.4> on input line 146.
+LaTeX Font Info:    Calculating math sizes for size <8.4> on input line 148.
 
 
 LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <4.2> not available
-(Font)              size <5> substituted on input line 146.
+(Font)              size <5> substituted on input line 148.
 
 
 LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <4.2> not available
-(Font)              size <5> substituted on input line 146.
+(Font)              size <5> substituted on input line 148.
 
 
 LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <4.2> not available
-(Font)              size <5> substituted on input line 146.
+(Font)              size <5> substituted on input line 148.
 
-<plots/cumulative_returns.png, id=62, 1158.3275pt x 561.09625pt>
+<plots/cumulative_returns.png, id=66, 1158.3275pt x 561.09625pt>
 File: plots/cumulative_returns.png Graphic file (type png)
 <use plots/cumulative_returns.png>
-Package pdftex.def Info: plots/cumulative_returns.png  used on input line 193.
+Package pdftex.def Info: plots/cumulative_returns.png  used on input line 196.
 (pdftex.def)             Requested size: 422.77664pt x 204.79414pt.
-<plots/daily_returns_alt.png, id=65, 526.96875pt x 325.215pt>
+<plots/daily_returns_alt.png, id=69, 526.96875pt x 325.215pt>
 File: plots/daily_returns_alt.png Graphic file (type png)
 <use plots/daily_returns_alt.png>
-Package pdftex.def Info: plots/daily_returns_alt.png  used on input line 200.
+Package pdftex.def Info: plots/daily_returns_alt.png  used on input line 203.
 (pdftex.def)             Requested size: 469.75502pt x 289.92178pt.
 [4] [5 <./plots/cumulative_returns.png>] [6 <./plots/daily_returns_alt.png>]
-<plots/acf_monthly_returns.png, id=90, 398.99063pt x 413.29407pt>
+<plots/acf_monthly_returns.png, id=94, 398.99063pt x 413.29407pt>
 File: plots/acf_monthly_returns.png Graphic file (type png)
 <use plots/acf_monthly_returns.png>
-Package pdftex.def Info: plots/acf_monthly_returns.png  used on input line 226.
+Package pdftex.def Info: plots/acf_monthly_returns.png  used on input line 230.
 
 (pdftex.def)             Requested size: 328.82707pt x 340.63126pt.
 
@@ -1122,10 +1122,10 @@ Package pdftex.def Info: plots/acf_monthly_returns.png  used on input line 226.
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [7]
-<plots/pacf_monthly_returns.png, id=100, 398.99063pt x 413.29407pt>
+<plots/pacf_monthly_returns.png, id=104, 398.99063pt x 413.29407pt>
 File: plots/pacf_monthly_returns.png Graphic file (type png)
 <use plots/pacf_monthly_returns.png>
-Package pdftex.def Info: plots/pacf_monthly_returns.png  used on input line 243
+Package pdftex.def Info: plots/pacf_monthly_returns.png  used on input line 249
 .
 (pdftex.def)             Requested size: 362.80807pt x 375.80544pt.
 
@@ -1133,22 +1133,52 @@ Package pdftex.def Info: plots/pacf_monthly_returns.png  used on input line 243
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [8 <./plots/acf_monthly_returns.png>] [9 <./plots/pacf_monthly_returns.png>]
-[10] (report_1.aux)
+[10]
+<plots/cumulative_returns_appl_nvda.png, id=121, 1161.33875pt x 561.09625pt>
+File: plots/cumulative_returns_appl_nvda.png Graphic file (type png)
+<use plots/cumulative_returns_appl_nvda.png>
+Package pdftex.def Info: plots/cumulative_returns_appl_nvda.png  used on input 
+line 282.
+(pdftex.def)             Requested size: 375.80544pt x 181.56645pt.
+<plots/aapl_nvda_returns.png, id=122, 526.96875pt x 325.215pt>
+File: plots/aapl_nvda_returns.png Graphic file (type png)
+<use plots/aapl_nvda_returns.png>
+Package pdftex.def Info: plots/aapl_nvda_returns.png  used on input line 288.
+(pdftex.def)             Requested size: 375.80544pt x 231.93643pt.
+<plots/acf_aapl_nvda.png, id=123, 398.99063pt x 413.29407pt>
+File: plots/acf_aapl_nvda.png Graphic file (type png)
+<use plots/acf_aapl_nvda.png>
+Package pdftex.def Info: plots/acf_aapl_nvda.png  used on input line 294.
+(pdftex.def)             Requested size: 281.85587pt x 291.97145pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<plots/pacf_aapl_nvda.png, id=124, 398.99063pt x 413.29407pt>
+File: plots/pacf_aapl_nvda.png Graphic file (type png)
+<use plots/pacf_aapl_nvda.png>
+Package pdftex.def Info: plots/pacf_aapl_nvda.png  used on input line 300.
+(pdftex.def)             Requested size: 281.85587pt x 291.97145pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[11 <./plots/cumulative_returns_appl_nvda.png> <./plots/aapl_nvda_returns.png>]
+[12 <./plots/acf_aapl_nvda.png> <./plots/pacf_aapl_nvda.png>] (report_1.aux)
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 2.90001pt have occurred.
 
 Package rerunfilecheck Info: File `report_1.out' has not changed.
-(rerunfilecheck)             Checksum: 3A0B9A6CEEFA8745805BA826B8D4EE28;908.
+(rerunfilecheck)             Checksum: 36600C666794317111944F84B5CD4E3F;1005.
  ) 
 Here is how much of TeX's memory you used:
- 35301 strings out of 476326
- 818274 string characters out of 5787722
- 1867660 words of memory out of 5000000
- 55137 multiletter control sequences out of 15000+600000
+ 35337 strings out of 476326
+ 819238 string characters out of 5787722
+ 1869660 words of memory out of 5000000
+ 55162 multiletter control sequences out of 15000+600000
  527919 words of font info for 96 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 102i,20n,104p,847b,609s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 102i,20n,104p,967b,609s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\drebi\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm
 1200.pk><C:/Users/drebi/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfon
 ts/cm/cmbx12.pfb><C:/Users/drebi/AppData/Local/Programs/MiKTeX/fonts/type1/publ
@@ -1163,9 +1193,9 @@ Users/drebi/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.
 pfb><C:/Users/drebi/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/c
 m/cmti12.pfb><C:/Users/drebi/AppData/Local/Programs/MiKTeX/fonts/type1/public/a
 msfonts/cm/cmti8.pfb>
-Output written on report_1.pdf (10 pages, 278396 bytes).
+Output written on report_1.pdf (12 pages, 338536 bytes).
 PDF statistics:
- 176 PDF objects out of 1000 (max. 8388607)
- 34 named destinations out of 1000 (max. 500000)
- 81 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 203 PDF objects out of 1000 (max. 8388607)
+ 41 named destinations out of 1000 (max. 500000)
+ 109 words of extra memory for PDF output out of 10000 (max. 10000000)
 
