@@ -59,7 +59,34 @@ qcom_close <- na.omit(Cl(QCOM))  # Use closing prices
 p_max <- 10
 q_max <- 10
 
+par(mfrow=c(1,2))
+
+log_qcom <- log(qcom_close)
+
 log_returns <- diff(log(qcom_close))[-1]
+
+plot(log_qcom, type='l', ylab="Log Price")
+plot(log_returns_qcom,  type='l', ylab="Log Return")
+
+adf.test(log_qcom)
+
+adf.test(log_returns_qcom)
+
+
+
+log_qcom_5yrs <- tail(log_qcom, 252*5 )
+
+par(mfrow=c(2,2))
+acf(log_qcom_5yrs, lag.max=100, main="", ylab="Log Price")
+acf(na.omit(diff(c(log_qcom_5yrs))), lag.max=100, main="", ylab="Regular Differencing")
+acf(na.omit(diff(log_qcom_5yrs, lag=30)), lag.max=100, main="", ylab="Seasonal Diferencing")
+acf(na.omit(diff(diff(log_qcom_5yrs,  lag=30))), lag.max=100,main="", ylab="Regular and Seasonal Differencing")
+
+par(mfrow=c(2,2))
+acf(na.omit(diff(diff(log_qcom,  lag=30))), main="",lag.max = 50, xlab="(a)", ylab="ACF (Log Prices)")
+pacf(na.omit(diff(diff(log_qcom,  lag=30))), main="",lag.max = 50, xlab="(b)",ylab="PACF (Log Price)")
+acf(log_returns, main="",lag.max = 50, xlab="(a)", ylab="ACF (Log Returns)")
+pacf(log_returns, main="",lag.max = 50, xlab="(a)", ylab="PACF (Log Returns)")
 
 eacf_result <- eacf(log_returns)
 
