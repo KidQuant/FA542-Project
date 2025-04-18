@@ -5,8 +5,8 @@
 - a. Overview of the asset and the market for the asset
   
 - b. Properties of the time-series
-      - i. Descriptive statistics
-      - ii. Visualization
+      - i. Descriptive statistics \\
+      - ii. Visualization \\
       - iii. Unit-root and seasonality tests
 
 - c. ARIMA model of price and return  
