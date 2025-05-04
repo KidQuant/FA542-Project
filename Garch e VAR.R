@@ -17,8 +17,8 @@ getSymbols(symbols, src = "yahoo", from = "2007-01-01", to = "2025-02-10")
 nvda_close <- na.omit(Cl(NVDA))
 qcom_close <- na.omit(Cl(QCOM))
 
-log_returns_nvda <- diff(log(nvda_close))[-1]
-log_returns_qcom <- diff(log(qcom_close))[-1]
+log_returns_nvda <- diff(log(nvda_close))[-1] * 252
+log_returns_qcom <- diff(log(qcom_close))[-1] * 252
 
 
 par(mfrow=c(1,2))

@@ -26,4 +26,5 @@ VARselect(combined_log_returns, lag.max = 12, type = "const")
 var_model <- VAR(combined_log_returns, p = 1, type = "const")
 var_model
 # Perform the multivariate Ljung-Box test
+
 mq(combined_log_returns, lag = 12)

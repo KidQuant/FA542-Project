@@ -407,10 +407,169 @@ where $\phi_0$ is a $k-$dimensional vector, $\Phi$ is a $k\times k$ matrix, and 
 	r_{2t}=\phi_{20}+\Phi_{21}r_{1,t-1}+\Phi_{22}r_{2,t-1}+a_{2t},\\
 \end{aligned}
 \end{equation}
+The individual equations derived from the matrix form are QCOM returns:
+\begin{equation}
+\begin{aligned}
+	\text{QCOM}_t=0.002356\cdot\text{QCOM}_{t-1}+0.03490\cdot\text{AMD}_{t-1}+2.1352\\
+	\text{AMD}_t=-0.03611\cdot\text{QCOM}_{t-1}-0.08491\cdot\text{AMD}_{t-1}+1.9618\\
+\end{aligned}
+\end{equation}
+which gives us the following matrix representation
+\begin{equation}
+	\begin{bmatrix}
+		\text{QCOM}_t \\
+		\text{AMD}_t
+	\end{bmatrix}
+	=
+	\begin{bmatrix}
+		2.1352 \\
+		1.9618
+	\end{bmatrix}
+	+
+	\begin{bmatrix}
+		0.02356 & 0.03490 \\
+		-0.03611 & -0.08491
+	\end{bmatrix}
+	\begin{bmatrix}
+		\text{QCOM}_{t-1} \\
+		\text{AMD}_{t-1}
+	\end{bmatrix}
+	+
+	\begin{bmatrix}
+		\epsilon_{\text{QCOM},t} \\
+		\epsilon_{\text{AMD},t}
+	\end{bmatrix}
+\end{equation}
+The QCOM equation shows weak positive autocorrelation and a mild positive effect from AMD’s previous return, suggesting slight predictive influence. The AMD equation exhibits negative coefficients for both lagged variables, indicating possible mean-reversion and a modest inverse relationship with QCOM’s past performance. The intercept terms represent average return levels adjusted for lagged influences.
 
+Overall, the VAR(1) model captures the dynamic feedback between AMD and QCOM returns, allowing for richer modeling than univariate time series approaches. The small magnitude of the coefficients suggests that while interdependence exists, the direct predictive power is limited. However, even weak relationships can be valuable for short-term forecasting, constructing hedging strategies, or understanding market behavior under shocks (e.g., via impulse response functions). 
 \newpage
+
+\subsection*{NVDA Volatility Models}
+
+This section presents a comparative analysis of two volatility models—ARCH(1) and GARCH(1,1)—applied to the log returns of NVDA. The objective is to assess which model better captures the time-varying conditional heteroskedasticity in the return series, based on both statistical diagnostics and residual behavior.
+
+\subsubsection*{ARCH(1) Models}
+
+This report presents a comparative analysis of two volatility models—ARCH(1) and GARCH(1,1)—applied to the returns of NVDA (NVIDIA Corporation). The objective is to assess which model better captures the time-varying conditional heteroskedasticity in the return series, based on both statistical diagnostics and residual behavior.
+
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.8\linewidth]{plots/ARCH_NVDA.png}
+	\caption{ACF and PACF of the Regular and Squared Residuals for NVDA ARCH Model}
+	\label{fig:nvda_arch}
+\end{figure}
+
+Despite the statistical significance of the estimated parameters, the ARCH(1) model failed to fully capture the volatility dynamics of the NVDA returns. The ACF and PACF plots of squared standardized residuals revealed strong autocorrelation at multiple lags, indicating the persistence of conditional heteroskedasticity in the residuals. This diagnosis is supported by the results of the Ljung-Box test on squared residuals, which returned a highly significant p-value (p < 0.001), leading to rejection of the null hypothesis of no autocorrelation.
+
+Furthermore, the ARCH LM test statistics at lags 2, 4, and 6 all produced significant p-values (p < 0.01), confirming the presence of remaining ARCH effects. The Nyblom stability test reported joint and individual statistics that exceeded critical values, suggesting some parameter instability, particularly in the variance dynamics (omega and shape). Lastly, the Sign Bias test showed evidence of asymmetric effects (joint $p-value = 0.0266$), implying that positive and negative shocks affect volatility differently—something the ARCH model does not account for.
+
+\subsubsection*{GARCH(1,1,)}
+
+The GARCH(1,1) model (sGARCH(1,1)) was estimated using the same distributional assumptions and mean model. The parameter estimates for alpha1 and beta1 were highly significant, while the constant term (omega) was only marginally significant. The model achieved a higher log-likelihood value of 10177.79 and a lower AIC of -4.4114, indicating a better overall fit compared to the ARCH(1) model.
+
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.8\linewidth]{plots/GARCH_NVDA.png}
+	\caption{ACF and PACF of the Regular and Squared Residuals for NVDA GARCH Model}
+	\label{fig:garch_nvda}
+\end{figure}
+
+Most notably, the ACF and PACF plots of squared standardized residuals under the GARCH model revealed minimal autocorrelation. The Ljung-Box test on squared residuals returned a p-value of 0.9782, strongly supporting the null hypothesis of no remaining autocorrelation. Similarly, the ARCH LM tests showed no significant ARCH effects at lags 3, 5, or 7 $(p > 0.75 )$, confirming that the GARCH(1,1) model adequately captures the time-varying volatility structure of NVDA returns.
+
+\begin{table}[h!]
+	\centering
+	\caption{Weighted Ljung-Box Test Results for NVDA ARCH(1) and GARCH(1,1)}
+	\begin{tabular}{llccc}
+		\hline
+		\textbf{Model} & \textbf{Residual Type} & \textbf{Lag} & \textbf{Statistic} & \textbf{p-value} \\
+		\hline
+		ARCH(1)   & Standardized Residuals      & Lag[1]              & 1.969   & 0.1606 \\
+		&                             & Lag$(2(p+q)+(p+q)-1)$ & 2.063   & 0.2526 \\
+		&                             & Lag$4((p+q)+(p+q)-1)$ & 2.468   & 0.5126 \\
+		& Squared Residuals           & Lag(1)              & 2.166   & 0.1411 \\
+		&                             & Lag(2(p+q)+(p+q)-1) & 5.790   & 0.0250 \\
+		&                             & Lag(4(p+q)+(p+q)-1) & 16.934  & 0.0001 \\
+		GARCH(1,1) & Standardized Residuals     & Lag[1]              & 1.905   & 0.1676 \\
+		&                            & Lag(2(p+q)+(p+q)-1) & 2.284   & 0.2197 \\
+		&                            & Lag(4(p+q)+(p+q)-1) & 2.587   & 0.4875 \\
+		& Squared Residuals          & Lag(1)              & 0.114   & 0.7352 \\
+		&                            & Lag(2(p+q)+(p+q)-1) & 0.820   & 0.8989 \\
+		&                            & Lag(4(p+q)+(p+q)-1) & 1.450   & 0.9596 \\
+		\hline
+	\end{tabular}
+	\label{tab:nvda_combined_wlb}
+\end{table}
+
+The results clearly demonstrate that the GARCH(1,1) model outperforms the ARCH(1) model in modeling NVDA return volatility. It provides better in-sample fit metrics, successfully eliminates residual autocorrelation in squared returns, and addresses conditional heteroskedasticity effectively. While both models exhibit some sign bias, indicating asymmetric volatility response, the overall diagnostics suggest that GARCH(1,1) is more appropriate for capturing volatility clustering in NVDA returns.
+
+In summary, the GARCH(1,1) model should be preferred over the ARCH(1) model for financial modeling, risk management, and volatility forecasting tasks involving NVDA. However, the presence of asymmetry hints at further improvements using nonlinear or asymmetric volatility models, which are recommended for future exploration.
+
+\subsection*{QCOM Volatility Models}
+
+This section presents a comparative evaluation of ARCH(1) and GARCH(1,1) models fitted to the log returns of QCOM. We have the same objective as the NVDA time series.
+
+\subsubsection*{ARCH(1)}
+
+The ARCH(1) model is specified as a sGARCH(1,0) process under a zero-mean ARFIMA(0,0,0) structure and Student’s t-distributed innovations. All estimated parameters, including the mean ($\mu = 0.000735, \omega=0.000356, \text{ and } \alpha =0.4177$, and the shape parameter (3.2988), are statistically significant at the 1\% level under both standard and robust standard errors. The log-likelihood value achieved is 11768.02, and the AIC is -5.1015.
+
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.8\linewidth]{plots/ARCH_QCOM.png}
+	\caption{ACF and PACF of the Regular and Squared Residuals for QCOM ARCH Model}
+	\label{fig:nvda_garch}
+\end{figure}
+
+Despite the strong parameter estimates, residual diagnostics suggest that the ARCH(1) model inadequately captures QCOM’s conditional heteroskedasticity. The ACF and PACF of the standardized residuals display persistent autocorrelation, especially at lags 1–20. The Ljung-Box test on residuals confirms this with a $p$-value of 0.037, indicating statistically significant autocorrelation.
+
+Furthermore, the squared residuals’ ACF and PACF plots show moderate persistence across multiple lags. The Ljung-Box test on squared residuals has a $p$-value of 0.001, suggesting that residual volatility clustering remains. While the ARCH LM test is insignificant at lag 2 ($p$ = 0.26), it becomes significant at lags 4 and 6 ($p = 0.0269 \text{ and } 0.0074$), indicating remaining ARCH effects that the ARCH(1) model fails to capture.
+
+\subsubsection*{GARCH(1,1)}
+
+The GARCH(1,1) model builds upon the ARCH specification by introducing a lagged conditional variance term. Estimated parameters ($\mu = 0.000705, \omega = 0.000007, \alpha_1 = 0.0821, \beta = 0.9121$) are statistically significant, with the conditional variance showing high persistence ($\alpha + \beta \approx 0.994$). The model achieved a higher log-likelihood (11937.86) and a lower AIC of -5.1747, indicating a better fit than the ARCH(1) model.
+
+The ACF and PACF plots both both standardized and squared standardized residuals show no significant autocorrelation. This is further supported by the Ljung-Box test results:
+
+\begin{itemize}
+	\item Standardize residuals: $p=0.373$
+	\item Squared residual: $p=0.09932$
+\end{itemize}
+
+These results indicate that the GARCH(1,1) model effectively removes both linear and nonlinear dependence in the residuals. Moreover, ARCH LM tests at lags 3, 5, and 7 are all highly insignificant ($p > 0.81$), confirming that no residual ARCH effects remain. This demonstrates that the GARCH model has adequately captured the conditional variance structure.
+
+\subsubsection*{Model Comparisons}
+
+\begin{table}[h!]
+	\centering
+	\caption{Weighted Ljung-Box Test Results for QCOM ARCH(1) and GARCH(1,1)}
+	\begin{tabular}{llccc}
+		\hline
+		\textbf{Model} & \textbf{Residual Type} & \textbf{Lag} & \textbf{Statistic} & \textbf{p-value} \\
+		\hline
+		ARCH(1)   & Standardized Residuals      & Lag(1)              & 6.284   & 0.0122 \\
+		&                             & Lag(2(p+q)+(p+q)-1) & 7.505   & 0.0088 \\
+		&                             & Lag(4(p+q)+(p+q)-1) & 8.686   & 0.0199 \\
+		& Squared Residuals           & Lag(1)              & 2.210   & 0.1371 \\
+		&                             & Lag(2(p+q)+(p+q)-1) & 2.849   & 0.1542 \\
+		&                             & Lag(4(p+q)+(p+q)-1) & 8.714   & 0.0195 \\
+		GARCH(1,1) & Standardized Residuals     & Lag(1)              & 0.237   & 0.6268 \\
+		&                            & Lag(2(p+q)+(p+q)-1) & 1.338   & 0.4006 \\
+		&                            & Lag(4(p+q)+(p+q)-1) & 2.569   & 0.4915 \\
+		& Squared Residuals          & Lag(1)              & 0.104   & 0.7471 \\
+		&                            & Lag(2(p+q)+(p+q)-1) & 0.292   & 0.9845 \\
+		&                            & Lag(4(p+q)+(p+q)-1) & 0.877   & 0.9908 \\
+		\hline
+	\end{tabular}
+	\label{tab:qcom_combined_wlb}
+\end{table}
+
+A comparative analysis of the ARCH(1) and GARCH(1,1) models applied to QCOM’s return series reveals that the GARCH(1,1) specification provides a superior statistical fit. This is evidenced by a higher log-likelihood and a lower Akaike Information Criterion (AIC). Additionally, residual diagnostics demonstrate that the GARCH model effectively eliminates autocorrelation in both the standardized and squared residuals, indicating a proper capture of volatility clustering. The model also passes the ARCH LM tests, confirming the absence of remaining ARCH effects. Nyblom stability tests further support the robustness of the GARCH(1,1) model, showing no significant instability in parameter estimates.
+
+In contrast, the ARCH(1) model exhibits residual autocorrelation, suggesting inadequate modeling of volatility dynamics. It also shows signs of model misspecification and parameter instability. While sign bias tests show no significant asymmetry under either model, the GARCH(1,1) specification clearly outperforms in terms of overall model adequacy. As a result, the GARCH(1,1) model is the preferred choice for modeling QCOM return volatility. Given the lack of significant asymmetric effects, more complex specifications such as EGARCH or GJR-GARCH are not warranted in this context.
+
 \section*{Appendix}
 \begin{appendices}
+\subsection*{Figures}
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=1\linewidth]{plots/residual_plot_1_1.png}
@@ -424,6 +583,28 @@ where $\phi_0$ is a $k-$dimensional vector, $\Phi$ is a $k\times k$ matrix, and 
 	\caption{Cumulative Returns of our Sample Stocks Universe}
 	\label{fig:cumulative_returns}
 \end{figure}
+\newpage
+\subsection*{Tables}
+
+\begin{table}[h!]
+	\centering
+	\caption{Ljung-Box Test Results for Standardized and Squared Residuals}
+	\begin{tabular}{lcccc}
+		\hline
+		\textbf{Model} & \textbf{Residual Type} & \textbf{Test Statistic} & \textbf{DF} & \textbf{p-value} \\
+		\hline
+		\textbf{NVDA ARCH(1)} & Residuals              & 17.138  & 10 & 0.0714 \\
+		& Squared Residuals      & 64.433  & 10 & $5.20 \times 10^{-10}$ \\
+		\textbf{NVDA GARCH(1,1)} & Residuals           & 10.716  & 10 & 0.3801 \\
+		& Squared Residuals   & 3.130   & 10 & 0.9782 \\
+		\textbf{QCOM ARCH(1)} & Residuals              & 19.260  & 10 & 0.0371 \\
+		& Squared Residuals      & 29.587  & 10 & 0.0010 \\
+		\textbf{QCOM GARCH(1,1)} & Residuals           & 10.804  & 10 & 0.3730 \\
+		& Squared Residuals   & 2.327   & 10 & 0.9932 \\
+		\hline
+	\end{tabular}
+	\label{tab:ljungbox}
+\end{table}
 
 \end{appendices}
 \end{document}
