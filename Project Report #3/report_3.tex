@@ -392,6 +392,22 @@ Plot (b) investigates whether QCOM’s past return (lag-1) helps explain AMD’s
 
 Finally, plot (d) looks at AMD's return against its own lag-1 value. The spread suggests minimal autocorrelation, which aligns with the empirical observation that individual stock returns are typically weakly autocorrelated at monthly frequencies due to market efficiency.
 
+In our research, we we estimate a VAR(1) model using monthly log returns from QCOM (Qualcomm) and AMD (Advanced Micro Devices). The VAR(1) specification implies that each variable in the system is modeled as a linear function of one lag of both itself and the other variable, plus a constant and a random error term. This structure allows us to explore how past performance in one stock may influence future returns in both, offering insights into potential lead-lag relationships and co-movement dynamics in financial markets.
+
+Matheamatically, a VAR(1) model for two variables can be expressed as the following:
+\begin{equation}
+	r_t=\phi_0+\Phi_{r_{t-1}}+a_t
+\end{equation}
+
+where $\phi_0$ is a $k-$dimensional vector, $\Phi$ is a $k\times k$ matrix, and $\lbrace a_t\rbrace$ is a sequence of serially uncorrelated random vectors with mean zero and covariance matrix $\Sigma$. The VAR(1) model consist of the following two equations:
+
+\begin{equation}
+\begin{aligned}
+	r_{1t}=\phi_{10}+\Phi_{11}r_{1,t-1}+\Phi_{12}r_{2,t-1}+a_{1t},\\
+	r_{2t}=\phi_{20}+\Phi_{21}r_{1,t-1}+\Phi_{22}r_{2,t-1}+a_{2t},\\
+\end{aligned}
+\end{equation}
+
 \newpage
 \section*{Appendix}
 \begin{appendices}

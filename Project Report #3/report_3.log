@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.2.21)  3 MAY 2025 22:52
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.2.21)  4 MAY 2025 04:06
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1119,18 +1119,18 @@ Package pdftex.def Info: plots/amd_qcom_scatter.png  used on input line 384.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[14] [15 <./plots/amd_qcom_scatter.png>]
-<plots/residual_plot_1_1.png, id=166, 986.9372pt x 438.13687pt>
+[14] [15 <./plots/amd_qcom_scatter.png>] [16]
+<plots/residual_plot_1_1.png, id=175, 986.9372pt x 438.13687pt>
 File: plots/residual_plot_1_1.png Graphic file (type png)
 <use plots/residual_plot_1_1.png>
-Package pdftex.def Info: plots/residual_plot_1_1.png  used on input line 400.
+Package pdftex.def Info: plots/residual_plot_1_1.png  used on input line 416.
 (pdftex.def)             Requested size: 469.75502pt x 208.54503pt.
-<plots/cumulative_returns.png, id=167, 1166.3575pt x 561.09625pt>
+<plots/cumulative_returns.png, id=176, 1166.3575pt x 561.09625pt>
 File: plots/cumulative_returns.png Graphic file (type png)
 <use plots/cumulative_returns.png>
-Package pdftex.def Info: plots/cumulative_returns.png  used on input line 407.
+Package pdftex.def Info: plots/cumulative_returns.png  used on input line 423.
 (pdftex.def)             Requested size: 422.77664pt x 203.38147pt.
- [16 <./plots/residual_plot_1_1.png> <./plots/cumulative_returns.png>] (./repor
+ [17 <./plots/residual_plot_1_1.png> <./plots/cumulative_returns.png>] (./repor
 t_3.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
@@ -1148,8 +1148,8 @@ Package rerunfilecheck Info: File `report_3.out' has not changed.
 (rerunfilecheck)             Checksum: A2B27B10D1DC9DDB44A1411E8226B301;730.
  ) 
 Here is how much of TeX's memory you used:
- 35388 strings out of 474116
- 809080 string characters out of 5743682
+ 35391 strings out of 474116
+ 809113 string characters out of 5743682
  1946187 words of memory out of 5000000
  57145 multiletter control sequences out of 15000+600000
  573671 words of font info for 100 fonts, out of 8000000 for 9000
@@ -1158,19 +1158,22 @@ Here is how much of TeX's memory you used:
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
 ></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb>
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb><
-/usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></u
-sr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr
-/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/l
-ocal/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/loca
-l/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local
-/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/t
-exlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/te
-xlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/local/texl
-ive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on report_3.pdf (16 pages, 417734 bytes).
+/usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></u
+sr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr
+/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/l
+ocal/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/loc
+al/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/
+texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/tex
+live/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texl
+ive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texliv
+e/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/
+2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2
+024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/local/texlive/202
+4/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on report_3.pdf (17 pages, 443468 bytes).
 PDF statistics:
- 242 PDF objects out of 1000 (max. 8388607)
- 178 compressed objects within 2 object streams
- 59 named destinations out of 1000 (max. 500000)
+ 264 PDF objects out of 1000 (max. 8388607)
+ 193 compressed objects within 2 object streams
+ 62 named destinations out of 1000 (max. 500000)
  95 words of extra memory for PDF output out of 10000 (max. 10000000)
 
