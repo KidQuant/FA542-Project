@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.2.21)  6 MAY 2025 00:46
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.2.21)  6 MAY 2025 09:50
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1299,6 +1299,18 @@ Overfull \hbox (99.36436pt too wide) has occurred while \output is active
 [26
 
 ]
+Overfull \hbox (99.36436pt too wide) in paragraph at lines 360--360
+ [][]  \OT1/cmss/m/n/6 ([])  
+ []
+
+
+Overfull \hbox (99.36436pt too wide) has occurred while \output is active
+ [][]  \OT1/cmss/m/n/6 ([])  
+ []
+
+[27
+
+]
 \tf@nav=\write6
 \openout6 = `document.nav'.
 
@@ -1317,8 +1329,8 @@ Package rerunfilecheck Info: File `document.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 21936 strings out of 474116
- 427305 string characters out of 5743682
+ 21938 strings out of 474116
+ 427324 string characters out of 5743682
  1944187 words of memory out of 5000000
  43784 multiletter control sequences out of 15000+600000
  567220 words of font info for 69 fonts, out of 8000000 for 9000
@@ -1336,10 +1348,10 @@ local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr
 local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/l
 ocal/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/loc
 al/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on document.pdf (26 pages, 986160 bytes).
+Output written on document.pdf (27 pages, 987702 bytes).
 PDF statistics:
- 850 PDF objects out of 1000 (max. 8388607)
- 727 compressed objects within 8 object streams
- 59 named destinations out of 1000 (max. 500000)
+ 878 PDF objects out of 1000 (max. 8388607)
+ 753 compressed objects within 8 object streams
+ 61 named destinations out of 1000 (max. 500000)
  146 words of extra memory for PDF output out of 10000 (max. 10000000)
 
