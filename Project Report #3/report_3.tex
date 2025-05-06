@@ -220,8 +220,8 @@ To test whether the log price $p_t$ of an asset follows a random walk, we would 
 where $\epsilon_t$ denotes the error term. We need to consider the null hypothesis
 \begin{equation}
 	\begin{aligned}
-		H_0:\phi_1=1\\
-		H_a:\phi_1<1.
+		&H_0:\phi_1=1\\
+		&H_a:\phi_1<1.
 	\end{aligned}
 \end{equation}
 Where the test statistic is
@@ -443,15 +443,46 @@ which gives us the following matrix representation
 The QCOM equation shows weak positive autocorrelation and a mild positive effect from AMD’s previous return, suggesting slight predictive influence. The AMD equation exhibits negative coefficients for both lagged variables, indicating possible mean-reversion and a modest inverse relationship with QCOM’s past performance. The intercept terms represent average return levels adjusted for lagged influences.
 
 Overall, the VAR(1) model captures the dynamic feedback between AMD and QCOM returns, allowing for richer modeling than univariate time series approaches. The small magnitude of the coefficients suggests that while interdependence exists, the direct predictive power is limited. However, even weak relationships can be valuable for short-term forecasting, constructing hedging strategies, or understanding market behavior under shocks (e.g., via impulse response functions). 
+
+\section*{Cointegration}
+
+In financial time series analysis, it is common to observe that individual asset prices or economic indicators follow nonstationary behavior, typically modeled as integrated processes of order one, \( I(1) \). However, economic theory often suggests that certain groups of such variables move together in the long run, maintaining stable equilibrium relationships despite short-term fluctuations. This phenomenon is known as \textit{cointegration}. Formally, if \( x_{1t} \) and \( x_{2t} \) are both \( I(1) \) series, they are cointegrated if there exists a scalar \( \gamma \) such that the linear combination \( w_t = x_{1t} - \gamma x_{2t} \) is stationary (\( I(0) \)). The vector \( (1, -\gamma) \) is then called the cointegrating vector, and \( w_t \) represents the equilibrium error or spread.
+
+To formally test and model cointegrated systems, particularly in higher dimensions, the \textit{Vector Error Correction Model (VECM)} framework is employed. This begins by rewriting a VAR(\(p\)) model of nonstationary series \( X_t \) in terms of first differences, yielding the VECM:
+\begin{equation}
+	\Delta X_t = \Pi X_{t-1} + \sum_{i=1}^{p-1} \Phi_i^* \Delta X_{t-i} + a_t
+\end{equation}
+Here, the matrix \( \Pi = \Phi_1 + \cdots + \Phi_p - I \) captures the long-run relationships, while \( \Phi_i^* \) represent short-run dynamics. The key insight is that the rank of \( \Pi \) determines the cointegration structure: if \( \text{rank}(\Pi) = r < k \), then there exist \( r \) cointegrating vectors, and we can factor \( \Pi \) as \( \alpha \beta' \), where \( \beta \) contains the cointegrating vectors and \( \alpha \) reflects the speed of adjustment toward long-run equilibrium.
+
+Cointegration has significant implications in financial applications. For instance, in \textit{pairs trading}, if two stock prices are cointegrated, the spread \( w_t = p_{1t} - \gamma p_{2t} \) will be mean-reverting, allowing traders to exploit deviations from the equilibrium for profit. A trading strategy might involve taking a long position in one stock and a short position in the other when the spread deviates from its historical mean by a certain threshold. 
+
+The Johansen test, based on estimating the rank of \( \Pi \) in the VECM, is the standard method for identifying such cointegrating relationships in multivariate systems. The hypothesis test is as follows:
+\begin{equation}
+	\begin{aligned}
+		&H_0:\text{rank}(\Pi)\leq r\\
+		&H_a:\text{rank}(\Pi)>r
+	\end{aligned}
+\end{equation}
+So increasing the assumed rank and testing how many stationary combinations exists. 
+
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.8\linewidth]{plots/QCOM_AMD.png}
+	\caption{Cumulative Returns of QCOM and AMD}
+	\label{fig:amd_qcom_cumul_returns}
+\end{figure}
+Figure (\ref{fig:amd_qcom_cumul_returns}) shows the cumulative returns for both QCOM and AMD. The two series seem to trach each other, especially in the later half of the sample. This suggest that a stationary spread may exists ($\omega_t=\text{QCOM}_t-\gamma\cdot\text{AMD}_t$)
+
 \newpage
 
 \subsection*{NVDA Volatility Models}
 
-This section presents a comparative analysis of two volatility models—ARCH(1) and GARCH(1,1)—applied to the log returns of NVDA. The objective is to assess which model better captures the time-varying conditional heteroskedasticity in the return series, based on both statistical diagnostics and residual behavior.
+This section presents a comparative analysis of two volatility models—ARCH(1) and GARCH(1,1) applied to the log returns of NVDA. The objective is to assess which model better captures the time-varying conditional heteroskedasticity in the return series, based on both statistical diagnostics and residual behavior.
 
 \subsubsection*{ARCH(1) Models}
 
-This report presents a comparative analysis of two volatility models—ARCH(1) and GARCH(1,1)—applied to the returns of NVDA (NVIDIA Corporation). The objective is to assess which model better captures the time-varying conditional heteroskedasticity in the return series, based on both statistical diagnostics and residual behavior.
+
+Despite the statistical significance of the estimated parameters, the ARCH(1) model failed to fully capture the volatility dynamics of the NVDA returns. The ACF and PACF plots of squared standardized residuals revealed strong autocorrelation at multiple lags, indicating the persistence of conditional heteroskedasticity in the residuals. This diagnosis is supported by the results of the Ljung-Box test on squared residuals, which returned a highly significant $p$-value ($p < 0.001$), leading to rejection of the null hypothesis of no autocorrelation.
 
 \begin{figure}[!h]
 	\centering
@@ -460,9 +491,7 @@ This report presents a comparative analysis of two volatility models—ARCH(1) a
 	\label{fig:nvda_arch}
 \end{figure}
 
-Despite the statistical significance of the estimated parameters, the ARCH(1) model failed to fully capture the volatility dynamics of the NVDA returns. The ACF and PACF plots of squared standardized residuals revealed strong autocorrelation at multiple lags, indicating the persistence of conditional heteroskedasticity in the residuals. This diagnosis is supported by the results of the Ljung-Box test on squared residuals, which returned a highly significant p-value (p < 0.001), leading to rejection of the null hypothesis of no autocorrelation.
-
-Furthermore, the ARCH LM test statistics at lags 2, 4, and 6 all produced significant p-values (p < 0.01), confirming the presence of remaining ARCH effects. The Nyblom stability test reported joint and individual statistics that exceeded critical values, suggesting some parameter instability, particularly in the variance dynamics (omega and shape). Lastly, the Sign Bias test showed evidence of asymmetric effects (joint $p-value = 0.0266$), implying that positive and negative shocks affect volatility differently—something the ARCH model does not account for.
+Furthermore, the ARCH LM test statistics at lags 2, 4, and 6 all produced significant $p$-values (p < 0.01), confirming the presence of remaining ARCH effects. The Nyblom stability test reported joint and individual statistics that exceeded critical values, suggesting some parameter instability, particularly in the variance dynamics (omega and shape). Lastly, the Sign Bias test showed evidence of asymmetric effects (joint $p$-value = 0.0266), implying that positive and negative shocks affect volatility differently—something the ARCH model does not account for.
 
 \subsubsection*{GARCH(1,1,)}
 
@@ -487,15 +516,15 @@ Most notably, the ACF and PACF plots of squared standardized residuals under the
 		ARCH(1)   & Standardized Residuals      & Lag[1]              & 1.969   & 0.1606 \\
 		&                             & Lag$(2(p+q)+(p+q)-1)$ & 2.063   & 0.2526 \\
 		&                             & Lag$4((p+q)+(p+q)-1)$ & 2.468   & 0.5126 \\
-		& Squared Residuals           & Lag(1)              & 2.166   & 0.1411 \\
-		&                             & Lag(2(p+q)+(p+q)-1) & 5.790   & 0.0250 \\
-		&                             & Lag(4(p+q)+(p+q)-1) & 16.934  & 0.0001 \\
+		& Squared Residuals           & Lag$(1)$              & 2.166   & 0.1411 \\
+		&                             & Lag$(2(p+q)+(p+q)-1)$ & 5.790   & 0.0250 \\
+		&                             & Lag$(4(p+q)+(p+q)-1)$ & 16.934  & 0.0001 \\
 		GARCH(1,1) & Standardized Residuals     & Lag[1]              & 1.905   & 0.1676 \\
-		&                            & Lag(2(p+q)+(p+q)-1) & 2.284   & 0.2197 \\
-		&                            & Lag(4(p+q)+(p+q)-1) & 2.587   & 0.4875 \\
-		& Squared Residuals          & Lag(1)              & 0.114   & 0.7352 \\
-		&                            & Lag(2(p+q)+(p+q)-1) & 0.820   & 0.8989 \\
-		&                            & Lag(4(p+q)+(p+q)-1) & 1.450   & 0.9596 \\
+		&                            & Lag$(2(p+q)+(p+q)-1)$ & 2.284   & 0.2197 \\
+		&                            & Lag$(4(p+q)+(p+q)-1)$ & 2.587   & 0.4875 \\
+		& Squared Residuals          & Lag$(1)$              & 0.114   & 0.7352 \\
+		&                            & Lag$(2(p+q)+(p+q)-1)$ & 0.820   & 0.8989 \\
+		&                            & Lag$(4(p+q)+(p+q)-1)$ & 1.450   & 0.9596 \\
 		\hline
 	\end{tabular}
 	\label{tab:nvda_combined_wlb}
@@ -546,18 +575,18 @@ These results indicate that the GARCH(1,1) model effectively removes both linear
 		\hline
 		\textbf{Model} & \textbf{Residual Type} & \textbf{Lag} & \textbf{Statistic} & \textbf{p-value} \\
 		\hline
-		ARCH(1)   & Standardized Residuals      & Lag(1)              & 6.284   & 0.0122 \\
-		&                             & Lag(2(p+q)+(p+q)-1) & 7.505   & 0.0088 \\
-		&                             & Lag(4(p+q)+(p+q)-1) & 8.686   & 0.0199 \\
-		& Squared Residuals           & Lag(1)              & 2.210   & 0.1371 \\
-		&                             & Lag(2(p+q)+(p+q)-1) & 2.849   & 0.1542 \\
-		&                             & Lag(4(p+q)+(p+q)-1) & 8.714   & 0.0195 \\
-		GARCH(1,1) & Standardized Residuals     & Lag(1)              & 0.237   & 0.6268 \\
-		&                            & Lag(2(p+q)+(p+q)-1) & 1.338   & 0.4006 \\
-		&                            & Lag(4(p+q)+(p+q)-1) & 2.569   & 0.4915 \\
-		& Squared Residuals          & Lag(1)              & 0.104   & 0.7471 \\
-		&                            & Lag(2(p+q)+(p+q)-1) & 0.292   & 0.9845 \\
-		&                            & Lag(4(p+q)+(p+q)-1) & 0.877   & 0.9908 \\
+		ARCH$(1)$   & Standardized Residuals      & Lag$(1)$              & 6.284   & 0.0122 \\
+		&                             & Lag$(2(p+q)+(p+q)-1)$ & 7.505   & 0.0088 \\
+		&                             & Lag$(4(p+q)+(p+q)-1) $& 8.686   & 0.0199 \\
+		& Squared Residuals           & Lag$(1)$              & 2.210   & 0.1371 \\
+		&                             & Lag$(2(p+q)+(p+q)-1)$ & 2.849   & 0.1542 \\
+		&                             & Lag$(4(p+q)+(p+q)-1)$ & 8.714   & 0.0195 \\
+		GARCH$(1,1)$ & Standardized Residuals     & Lag$(1)$              & 0.237   & 0.6268 \\
+		&                            & Lag$(2(p+q)+(p+q)-1)$ & 1.338   & 0.4006 \\
+		&                            & Lag$(4(p+q)+(p+q)-1)$ & 2.569   & 0.4915 \\
+		& Squared Residuals          & Lag$(1)$              & 0.104   & 0.7471 \\
+		&                            & Lag$(2(p+q)+(p+q)-1)$ & 0.292   & 0.9845 \\
+		&                            & Lag$(4(p+q)+(p+q)-1)$ & 0.877   & 0.9908 \\
 		\hline
 	\end{tabular}
 	\label{tab:qcom_combined_wlb}
@@ -576,35 +605,6 @@ In contrast, the ARCH(1) model exhibits residual autocorrelation, suggesting ina
 	\caption{Residual Plots for the ARIMA(1,0,1) model for the Log Prices}
 	\label{fig:residual_plot_1_1}
 \end{figure}
-
-\begin{figure}[!h]
-	\centering
-	\includegraphics[width=0.9\linewidth]{plots/cumulative_returns.png}
-	\caption{Cumulative Returns of our Sample Stocks Universe}
-	\label{fig:cumulative_returns}
-\end{figure}
-\newpage
-\subsection*{Tables}
-
-\begin{table}[h!]
-	\centering
-	\caption{Ljung-Box Test Results for Standardized and Squared Residuals}
-	\begin{tabular}{lcccc}
-		\hline
-		\textbf{Model} & \textbf{Residual Type} & \textbf{Test Statistic} & \textbf{DF} & \textbf{p-value} \\
-		\hline
-		\textbf{NVDA ARCH(1)} & Residuals              & 17.138  & 10 & 0.0714 \\
-		& Squared Residuals      & 64.433  & 10 & $5.20 \times 10^{-10}$ \\
-		\textbf{NVDA GARCH(1,1)} & Residuals           & 10.716  & 10 & 0.3801 \\
-		& Squared Residuals   & 3.130   & 10 & 0.9782 \\
-		\textbf{QCOM ARCH(1)} & Residuals              & 19.260  & 10 & 0.0371 \\
-		& Squared Residuals      & 29.587  & 10 & 0.0010 \\
-		\textbf{QCOM GARCH(1,1)} & Residuals           & 10.804  & 10 & 0.3730 \\
-		& Squared Residuals   & 2.327   & 10 & 0.9932 \\
-		\hline
-	\end{tabular}
-	\label{tab:ljungbox}
-\end{table}
 
 \end{appendices}
 \end{document}
