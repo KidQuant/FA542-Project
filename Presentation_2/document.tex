@@ -10,6 +10,7 @@
 \usepackage{graphicx}
 \usepackage{booktabs}
 \usepackage{amsmath}
+\usepackage{tabularx}
 
 \begin{document}
 	
@@ -358,5 +359,289 @@ which can then be rewritten as:
 	\centering
 	{\Large Value-at-Risk}
 \end{frame}
+
+\begin{frame}{Value-at-Risk: Introduction}
+	\begin{itemize}
+		\item Value at Risk (VaR) measures the maximum potential loss over a given time at a certain confidence level.
+		\item Assets analyzed: \textbf{QCOM} and \textbf{NVDA}
+		\item 1-day VaR computed at 95\% and 99\% confidence levels
+		\item Methods used:
+		\begin{itemize}
+			\item Historical VaR
+			\item Parametric (Gaussian) VaR
+			\item GARCH-Based VaR
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Historical VaR – Methodology}
+	\begin{itemize}
+		\item Non-parametric method: directly uses the empirical distribution of past returns.
+		\item Sort log returns from smallest to largest.
+		\item Select the quantile corresponding to the desired confidence level:
+		\[
+		\text{VaR}_{\alpha} = \text{Quantile}_{(1 - \alpha)}(\text{Returns})
+		\]
+		\item Example: 5th percentile of NVDA’s historical daily returns gives the 95\% 1-day VaR.
+		\item \textbf{Assumption}: Past return distribution approximates future risk.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Historical VaR – NVDA vs QCOM (95\%)}
+	\begin{figure}[!h]
+		\centering
+		\includegraphics[width=0.45\textwidth]{plots/nvda_hist_var_plot.png}
+		\hspace{0.05\textwidth}
+		\includegraphics[width=0.45\textwidth]{plots/qcom_hist_var_plot.png}
+		\caption{NVDA and QCOM Daily Log Returns with 95\% Historical VaR}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{VaR Violations – NVDA (95\%)}
+	\begin{figure}[!h]
+		\centering
+		\includegraphics[width=0.85\textwidth]{plots/nvda_hist_var_marked.png}
+		\caption{Daily Log Returns of NVDA with 95\% Historical VaR and Violation Points}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{VaR Violations – QCOM (95\%)}
+	\begin{figure}[!h]
+		\centering
+		\includegraphics[width=0.85\textwidth]{plots/qcom_hist_var_marked.png}
+		\caption{Daily Log Returns of QCOM with 95\% Historical VaR and Violation Points}
+	\end{figure}
+\end{frame}
+
+\begin{frame}
+	\frametitle{From Historical to Parametric VaR}
+	\centering
+	\Large
+	Historical VaR assumes the past will repeat...  
+	But what if we believe returns follow a known distribution?
+\end{frame}
+
+\begin{frame}{Parametric VaR – Gaussian Assumption}
+	\begin{itemize}
+		\item Assumes returns are normally distributed with mean $\mu$ and standard deviation $\sigma$.
+		\item VaR formula:
+		\[
+		\text{VaR}_\alpha = \mu - z_\alpha \cdot \sigma
+		\]
+		where $z_\alpha$ is the z-score for confidence level $\alpha$ (e.g., 1.645 for 95\%).
+		\item \textbf{Advantage}: Quick to compute.
+		\item \textbf{Limitation}: May underestimate tail risk due to normality assumption.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Parametric VaR – NVDA}
+	\begin{figure}[!h]
+		\centering
+		\includegraphics[width=0.85\textwidth]{plots/nvda_parametric_var_hist.png}
+		\caption{NVDA Return Distribution with 95\% and 99\% Parametric VaR Cutoffs}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Parametric VaR – QCOM}
+	\begin{figure}[!h]
+		\centering
+		\includegraphics[width=0.85\textwidth]{plots/qcom_parametric_var_hist.png}
+		\caption{QCOM Return Distribution with 95\% and 99\% Parametric VaR Cutoffs}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Empirical vs Theoretical Gaussian – NVDA}
+	\begin{figure}[!h]
+		\centering
+		\includegraphics[width=0.85\linewidth]{plots/nvda_density_plot.png}
+		\caption{NVDA: Empirical Return Density vs. Normal Distribution}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Empirical vs Theoretical Gaussian – QCOM}
+	\begin{figure}[!h]
+		\centering
+		\includegraphics[width=0.85\linewidth]{plots/qcom_density_plot.png}
+		\caption{QCOM: Empirical Return Density vs. Normal Distribution}
+	\end{figure}
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{From Parametric to GARCH-Based VaR}
+	\centering
+	\Large
+	Parametric VaR assumes constant volatility... \\
+	But markets often exhibit volatility clustering. \\
+	Can we model that dynamically?
+\end{frame}
+
+\begin{frame}{GARCH-Based VaR – Motivation}
+	\begin{itemize}
+		\item Financial time series often exhibit:
+		\begin{itemize}
+			\item Volatility clustering
+			\item Heavy tails
+		\end{itemize}
+		\item GARCH(1,1) models allow volatility to change over time:
+		\[
+		\sigma_t^2 = \omega + \alpha \epsilon_{t-1}^2 + \beta \sigma_{t-1}^2
+		\]
+		\item We forecast next-period $\mu_t$ and $\sigma_t$, then apply:
+		\[
+		\text{VaR}_\alpha = \mu_t - z_\alpha \cdot \sigma_t
+		\]
+		\item More responsive to recent market conditions.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{GARCH Conditional Volatility – NVDA vs QCOM}
+	\textbf{Volatility Forecast }
+	\begin{figure}[!h]
+		\centering
+		\includegraphics[width=0.45\textwidth]{plots/nvda_garch_vol.png}
+		\hspace{0.05\textwidth}
+		\includegraphics[width=0.45\textwidth]{plots/qcom_garch_vol.png}
+		\caption{Time-Varying Volatility from GARCH(1,1) Models for NVDA and QCOM}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{GARCH Conditional Volatility – NVDA}
+	\textbf{Volatility Forecast}
+	\begin{figure}[!h]
+		\centering
+		\includegraphics[width=0.85\linewidth]{plots/nvda_garch_vol.png}
+		\caption{Time-Varying Conditional Volatility from GARCH(1,1) Model for NVDA}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{GARCH Conditional Volatility – QCOM}
+	\textbf{Volatility Forecast}
+	\begin{figure}[!h]
+		\centering
+		\includegraphics[width=0.85\linewidth]{plots/qcom_garch_vol.png}
+		\caption{Time-Varying Conditional Volatility from GARCH(1,1) Model for QCOM}
+	\end{figure}
+\end{frame}
+
+
+\begin{frame}{VaR Estimates – Summary Table}
+	\textbf{VaR Estimates Summary }
+	\centering
+	\begin{tabular}{lccc}
+		\toprule
+		\textbf{Method} & \textbf{VaR Level} & \textbf{NVDA} & \textbf{QCOM} \\
+		\midrule
+		Historical       & 95\%  & -4.29\%  & -3.01\% \\
+		& 99\%  & -7.30\%  & -6.38\% \\
+		Parametric       & 95\%  & -4.56\%  & -3.43\% \\
+		(Gaussian)       & 99\%  & -6.51\%  & -4.86\% \\
+		GARCH-Based      & 95\%  & -7.73\%  & -3.59\% \\
+		& 99\%  & -11.01\% & -5.09\% \\
+		\bottomrule
+	\end{tabular}
+\end{frame}
+
+\begin{frame}{Interpreting the VaR Estimates Summary}
+	\begin{itemize}
+		\item \textbf{Historical VaR:} 
+		\begin{itemize}
+			\item Reflects empirical tail behavior.
+			\item NVDA shows higher loss potential than QCOM.
+		\end{itemize}
+		
+		\item \textbf{Parametric (Gaussian) VaR:}
+		\begin{itemize}
+			\item Easier to compute but underestimates tail risk.
+			\item 99\% VaR for NVDA is notably less negative than Historical.
+		\end{itemize}
+		
+		\item \textbf{GARCH-Based VaR:}
+		\begin{itemize}
+			\item Captures time-varying volatility.
+			\item Produces the most conservative estimates, especially for NVDA.
+			\item Better suited for assets with volatility clustering.
+		\end{itemize}
+		
+		\item \textbf{Conclusion:}
+		\begin{itemize}
+			\item GARCH offers superior risk estimation for tech stocks like NVDA.
+			\item Method choice significantly affects perceived risk.
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Beyond VaR: Introducing Expected Shortfall (ES)}
+	\centering
+	\Large
+	Value-at-Risk tells us the minimum loss in the worst-case...\\[1em]
+	\textbf{But what happens if things get even worse?} \\[2em]
+	\normalsize
+	Expected Shortfall helps us answer that.
+\end{frame}
+
+
+\begin{frame}{Expected Shortfall (95\%) – Parametric}
+	\textbf{Expected Shortfall: A Deeper Risk Measure}
+	\begin{itemize}
+		\item While VaR tells us the threshold of loss, Expected Shortfall (ES) tells us how bad it can get beyond that threshold.
+		\item \textbf{NVDA}: -5.76\%
+		\item \textbf{QCOM}: -4.30\%
+		\item ES is a coherent risk measure that better captures tail risk than VaR.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Comparison of VaR Methods}
+	\textbf{Comparison of all three VaR Methods}
+	\tiny
+	\renewcommand{\arraystretch}{1.4}  % Adjust row spacing
+	\begin{tabularx}{\textwidth}{l|X|X|X}
+		\toprule
+		\textbf{Feature} & \textbf{Historical VaR} & \textbf{Parametric VaR} & \textbf{GARCH-Based VaR} \\
+		\midrule
+		Model Assumption & None (empirical returns) & Normal distribution & Time-varying volatility \\
+		\midrule
+		Tail Sensitivity & Captures empirical tails & Often underestimates & Captures volatility clustering \\
+		\midrule
+		Ease of Computation & Simple & Very fast & Moderate (needs estimation) \\
+		\midrule
+		Volatility Assumption & Constant over time & Constant over time & Dynamic \\
+		\midrule
+		Reactiveness to Market & Low & Low & High \\
+		\midrule
+		Common Use Case & Backtesting, benchmarking & Quick estimate & Trading, stress testing \\
+		\bottomrule
+	\end{tabularx}
+\end{frame}
+
+\begin{frame}{Key Takeaways}
+	\begin{itemize}
+		\item Time series models like VAR, ARCH, and GARCH help capture dynamics in financial data.
+		\item VaR provides a standardized way to assess risk—each method has trade-offs.
+		\item GARCH-Based VaR is more adaptive to market conditions but computationally intensive.
+		\item Choosing the right model depends on context: simplicity vs. accuracy vs. responsiveness.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Applications in Practice}
+	\begin{itemize}
+		\item Risk management in trading desks and portfolio monitoring
+		\item Stress testing and regulatory compliance (e.g., Basel III)
+		\item Strategy development for hedge funds and market makers
+		\item Useful in modeling volatility spillovers and financial contagion
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\centering
+	\vspace{2cm}
+	{\Huge \textbf{Thank You!}}\\[1em]
+	{\Large Questions and Discussion Welcome}\\[2em]
+	\textit{Andre Sealy, Federica Malamisura, Swapnil Pant}\\
+	\textit{FA 542 – Time Series with Applications to Finance}\\
+	\textit{Stevens Institute of Technology}
+\end{frame}
+
 
 \end{document}
