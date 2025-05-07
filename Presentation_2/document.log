@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.2.21)  7 MAY 2025 11:40
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.2.21)  7 MAY 2025 11:57
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -726,32 +726,53 @@ Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
 \@lastruleclass=\count340
 \@thisrulewidth=\dimen306
 )
+(/usr/local/texlive/2024/texmf-dist/tex/latex/tools/tabularx.sty
+Package: tabularx 2023/07/08 v2.11c `tabularx' package (DPC)
+
+(/usr/local/texlive/2024/texmf-dist/tex/latex/tools/array.sty
+Package: array 2023/10/16 v2.5g Tabular extension package (FMi)
+\col@sep=\dimen307
+\ar@mcellbox=\box76
+\extrarowheight=\dimen308
+\NC@list=\toks46
+\extratabsurround=\skip65
+\backup@length=\skip66
+\ar@cellbox=\box77
+)
+\TX@col@width=\dimen309
+\TX@old@table=\dimen310
+\TX@old@col=\dimen311
+\TX@target=\dimen312
+\TX@delta=\dimen313
+\TX@cols=\count341
+\TX@ftn=\toks47
+)
 (/usr/local/texlive/2024/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2024-02-20 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count341
-\l__pdf_internal_box=\box76
+\l__color_backend_stack_int=\count342
+\l__pdf_internal_box=\box78
 )
 (./document.aux)
 \openout1 = `document.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -789,17 +810,17 @@ LaTeX Font Info:    ... okay on input line 14.
 
 (/usr/local/texlive/2024/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count342
-\scratchdimen=\dimen307
-\scratchbox=\box77
-\nofMPsegments=\count343
-\nofMParguments=\count344
-\everyMPshowfont=\toks46
-\MPscratchCnt=\count345
-\MPscratchDim=\dimen308
-\MPnumerator=\count346
-\makeMPintoPDFobject=\count347
-\everyMPtoPDFconversion=\toks47
+\scratchcounter=\count343
+\scratchdimen=\dimen314
+\scratchbox=\box79
+\nofMPsegments=\count344
+\nofMParguments=\count345
+\everyMPshowfont=\toks48
+\MPscratchCnt=\count346
+\MPscratchDim=\dimen315
+\MPnumerator=\count347
+\makeMPintoPDFobject=\count348
+\everyMPtoPDFconversion=\toks49
 ) (/usr/local/texlive/2024/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
@@ -809,64 +830,64 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-Package hyperref Info: Link coloring OFF on input line 14.
+Package hyperref Info: Link coloring OFF on input line 15.
 
 (./document.out) (./document.out)
 \@outlinefile=\write5
 \openout5 = `document.out'.
 
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  OT1/cmr/m/n --> OT1/cmss/m/n on input line 14.
+(Font)                  OT1/cmr/m/n --> OT1/cmss/m/n on input line 15.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/cmr/bx/n --> OT1/cmss/b/n on input line 14.
+(Font)                  OT1/cmr/bx/n --> OT1/cmss/b/n on input line 15.
 \symnumbers=\mathgroup6
 \sympureletters=\mathgroup7
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `normal'
-(Font)                  OT1/cmss/m/n --> OT1/cmr/m/n on input line 14.
-LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 14.
+(Font)                  OT1/cmss/m/n --> OT1/cmr/m/n on input line 15.
+LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 15.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
-(Font)                  OT1/cmr/bx/n --> OT1/cmss/b/n on input line 14.
+(Font)                  OT1/cmr/bx/n --> OT1/cmss/b/n on input line 15.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
-(Font)                  OT1/cmr/bx/n --> OT1/cmss/b/n on input line 14.
-LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 14.
+(Font)                  OT1/cmr/bx/n --> OT1/cmss/b/n on input line 15.
+LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 15.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/cmss/m/n --> OT1/cmss/m/n on input line 14.
+(Font)                  OT1/cmss/m/n --> OT1/cmss/m/n on input line 15.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/cmss/bx/n --> OT1/cmss/m/n on input line 14.
-LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 14.
+(Font)                  OT1/cmss/bx/n --> OT1/cmss/m/n on input line 15.
+LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 15.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/cmr/m/it --> OT1/cmss/m/it on input line 14.
+(Font)                  OT1/cmr/m/it --> OT1/cmss/m/it on input line 15.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/cmr/bx/it --> OT1/cmss/m/it on input line 14.
-LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 14.
+(Font)                  OT1/cmr/bx/it --> OT1/cmss/m/it on input line 15.
+LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 15.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/cmtt/m/n --> OT1/cmtt/m/n on input line 14.
+(Font)                  OT1/cmtt/m/n --> OT1/cmtt/m/n on input line 15.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/cmtt/m/n --> OT1/cmtt/m/n on input line 14.
+(Font)                  OT1/cmtt/m/n --> OT1/cmtt/m/n on input line 15.
 LaTeX Font Info:    Overwriting symbol font `numbers' in version `bold'
-(Font)                  OT1/cmss/m/n --> OT1/cmss/b/n on input line 14.
+(Font)                  OT1/cmss/m/n --> OT1/cmss/b/n on input line 15.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
-(Font)                  OT1/cmss/m/it --> OT1/cmss/b/it on input line 14.
+(Font)                  OT1/cmss/m/it --> OT1/cmss/b/it on input line 15.
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `bold'
-(Font)                  OT1/cmss/b/n --> OT1/cmr/b/n on input line 14.
+(Font)                  OT1/cmss/b/n --> OT1/cmr/b/n on input line 15.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
-(Font)                  OT1/cmss/b/n --> OT1/cmss/b/n on input line 14.
+(Font)                  OT1/cmss/b/n --> OT1/cmss/b/n on input line 15.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/cmss/m/n --> OT1/cmss/b/n on input line 14.
+(Font)                  OT1/cmss/m/n --> OT1/cmss/b/n on input line 15.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/cmss/m/it --> OT1/cmss/b/it on input line 14.
+(Font)                  OT1/cmss/m/it --> OT1/cmss/b/it on input line 15.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/cmtt/m/n --> OT1/cmtt/b/n on input line 14.
-LaTeX Font Info:    Redeclaring symbol font `pureletters' on input line 14.
+(Font)                  OT1/cmtt/m/n --> OT1/cmtt/b/n on input line 15.
+LaTeX Font Info:    Redeclaring symbol font `pureletters' on input line 15.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `normal'
 (Font)                  OT1/cmss/m/it --> OT1/mathkerncmss/m/sl on input line 1
-4.
+5.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
 (Font)                  OT1/cmss/b/it --> OT1/mathkerncmss/m/sl on input line 1
-4.
+5.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
 (Font)                  OT1/mathkerncmss/m/sl --> OT1/mathkerncmss/bx/sl on inp
-ut line 14.
+ut line 15.
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/translator/translator-basic-dicti
 onary-English.dict
@@ -892,12 +913,12 @@ Dictionary: translator-numbers-dictionary, Language: English
 tionary-English.dict
 Dictionary: translator-theorem-dictionary, Language: English 
 ) (./document.nav)
-Overfull \hbox (99.36436pt too wide) in paragraph at lines 14--14
+Overfull \hbox (99.36436pt too wide) in paragraph at lines 15--15
  [][]  \OT1/cmss/m/n/6 ([])  
  []
 
 
-Overfull \hbox (99.36436pt too wide) in paragraph at lines 17--17
+Overfull \hbox (99.36436pt too wide) in paragraph at lines 18--18
  [][]  \OT1/cmss/m/n/6 ([])  
  []
 
@@ -909,7 +930,7 @@ Overfull \hbox (99.36436pt too wide) has occurred while \output is active
 [1
 
 {/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-Overfull \hbox (99.36436pt too wide) in paragraph at lines 26--26
+Overfull \hbox (99.36436pt too wide) in paragraph at lines 27--27
  [][]  \OT1/cmss/m/n/6 ([])  
  []
 
@@ -921,14 +942,14 @@ Overfull \hbox (99.36436pt too wide) has occurred while \output is active
 [2
 
 ]
-Overfull \hbox (99.36436pt too wide) in paragraph at lines 36--36
+Overfull \hbox (99.36436pt too wide) in paragraph at lines 37--37
  [][]  \OT1/cmss/m/n/6 ([])  
  []
 
 <plots/sample_stocks.png, id=89, 1166.3575pt x 561.09625pt>
 File: plots/sample_stocks.png Graphic file (type png)
 <use plots/sample_stocks.png>
-Package pdftex.def Info: plots/sample_stocks.png  used on input line 36.
+Package pdftex.def Info: plots/sample_stocks.png  used on input line 37.
 (pdftex.def)             Requested size: 308.06367pt x 148.19322pt.
 
 Overfull \hbox (99.36436pt too wide) has occurred while \output is active
@@ -938,17 +959,17 @@ Overfull \hbox (99.36436pt too wide) has occurred while \output is active
 [3
 
  <./plots/sample_stocks.png>]
-Overfull \hbox (99.36436pt too wide) in paragraph at lines 46--46
+Overfull \hbox (99.36436pt too wide) in paragraph at lines 47--47
  [][]  \OT1/cmss/m/n/6 ([])  
  []
 
 <plots/amd_qcom_scatter.png, id=119, 714.7503pt x 570.933pt>
 File: plots/amd_qcom_scatter.png Graphic file (type png)
 <use plots/amd_qcom_scatter.png>
-Package pdftex.def Info: plots/amd_qcom_scatter.png  used on input line 46.
+Package pdftex.def Info: plots/amd_qcom_scatter.png  used on input line 47.
 (pdftex.def)             Requested size: 273.83728pt x 218.74269pt.
 
-Overfull \vbox (27.21655pt too high) detected at line 46
+Overfull \vbox (27.21655pt too high) detected at line 47
  []
 
 
@@ -959,17 +980,17 @@ Overfull \hbox (99.36436pt too wide) has occurred while \output is active
 [4
 
  <./plots/amd_qcom_scatter.png>]
-Overfull \hbox (99.36436pt too wide) in paragraph at lines 55--55
+Overfull \hbox (99.36436pt too wide) in paragraph at lines 56--56
  [][]  \OT1/cmss/m/n/6 ([])  
  []
 
 <plots/ccf_qcom_amd.png, id=150, 1846.9pt x 1190.4475pt>
 File: plots/ccf_qcom_amd.png Graphic file (type png)
 <use plots/ccf_qcom_amd.png>
-Package pdftex.def Info: plots/ccf_qcom_amd.png  used on input line 55.
+Package pdftex.def Info: plots/ccf_qcom_amd.png  used on input line 56.
 (pdftex.def)             Requested size: 273.83728pt x 176.5068pt.
 
-Overfull \vbox (6.68622pt too high) detected at line 55
+Overfull \vbox (6.68622pt too high) detected at line 56
  []
 
 
@@ -980,23 +1001,23 @@ Overfull \hbox (99.36436pt too wide) has occurred while \output is active
 [5
 
  <./plots/ccf_qcom_amd.png>]
-Overfull \hbox (99.36436pt too wide) in paragraph at lines 87--87
+Overfull \hbox (99.36436pt too wide) in paragraph at lines 88--88
  [][]  \OT1/cmss/m/n/6 ([])  
  []
 
-LaTeX Font Info:    Trying to load font information for U+msa on input line 87.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 88.
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 87.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 88.
 
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Trying to load font information for OT1+mathkerncmss on inp
-ut line 87.
+ut line 88.
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/sansmathaccent/ot1mathkerncmss.fd
 File: ot1mathkerncmss.fd 2020/01/31 Fontinst v1.933 font definitions for OT1/ma
@@ -1009,7 +1030,7 @@ Overfull \hbox (99.36436pt too wide) has occurred while \output is active
 [6
 
 ]
-Overfull \hbox (99.36436pt too wide) in paragraph at lines 123--123
+Overfull \hbox (99.36436pt too wide) in paragraph at lines 124--124
  [][]  \OT1/cmss/m/n/6 ([])  
  []
 
@@ -1021,7 +1042,7 @@ Overfull \hbox (99.36436pt too wide) has occurred while \output is active
 [7
 
 ]
-Overfull \hbox (99.36436pt too wide) in paragraph at lines 129--129
+Overfull \hbox (99.36436pt too wide) in paragraph at lines 130--130
  [][]  \OT1/cmss/m/n/6 ([])  
  []
 
@@ -1033,7 +1054,7 @@ Overfull \hbox (99.36436pt too wide) has occurred while \output is active
 [8
 
 ]
-Overfull \hbox (99.36436pt too wide) in paragraph at lines 136--136
+Overfull \hbox (99.36436pt too wide) in paragraph at lines 137--137
  [][]  \OT1/cmss/m/n/6 ([])  
  []
 
@@ -1045,7 +1066,7 @@ Overfull \hbox (99.36436pt too wide) has occurred while \output is active
 [9
 
 ]
-Overfull \hbox (99.36436pt too wide) in paragraph at lines 157--157
+Overfull \hbox (99.36436pt too wide) in paragraph at lines 158--158
  [][]  \OT1/cmss/m/n/6 ([])  
  []
 
@@ -1057,17 +1078,17 @@ Overfull \hbox (99.36436pt too wide) has occurred while \output is active
 [10
 
 ]
-Overfull \hbox (99.36436pt too wide) in paragraph at lines 165--165
+Overfull \hbox (99.36436pt too wide) in paragraph at lines 166--166
  [][]  \OT1/cmss/m/n/6 ([])  
  []
 
 <plots/engle_granger.png, id=327, 574.5465pt x 590.4459pt>
 File: plots/engle_granger.png Graphic file (type png)
 <use plots/engle_granger.png>
-Package pdftex.def Info: plots/engle_granger.png  used on input line 165.
+Package pdftex.def Info: plots/engle_granger.png  used on input line 166.
 (pdftex.def)             Requested size: 188.26346pt x 193.4693pt.
 
-Overfull \vbox (1.94316pt too high) detected at line 165
+Overfull \vbox (1.94316pt too high) detected at line 166
  []
 
 
@@ -1078,14 +1099,14 @@ Overfull \hbox (99.36436pt too wide) has occurred while \output is active
 [11
 
  <./plots/engle_granger.png>]
-Overfull \hbox (99.36436pt too wide) in paragraph at lines 174--174
+Overfull \hbox (99.36436pt too wide) in paragraph at lines 175--175
  [][]  \OT1/cmss/m/n/6 ([])  
  []
 
 <plots/QCOM_AMD.png, id=356, 859.2903pt x 426.393pt>
 File: plots/QCOM_AMD.png Graphic file (type png)
 <use plots/QCOM_AMD.png>
-Package pdftex.def Info: plots/QCOM_AMD.png  used on input line 174.
+Package pdftex.def Info: plots/QCOM_AMD.png  used on input line 175.
 (pdftex.def)             Requested size: 273.83728pt x 135.88249pt.
 
 Overfull \hbox (99.36436pt too wide) has occurred while \output is active
@@ -1095,14 +1116,14 @@ Overfull \hbox (99.36436pt too wide) has occurred while \output is active
 [12
 
  <./plots/QCOM_AMD.png>]
-Overfull \hbox (99.36436pt too wide) in paragraph at lines 183--183
+Overfull \hbox (99.36436pt too wide) in paragraph at lines 184--184
  [][]  \OT1/cmss/m/n/6 ([])  
  []
 
 <plots/QCOM_AMD_ratio.png, id=387, 708.246pt x 354.123pt>
 File: plots/QCOM_AMD_ratio.png Graphic file (type png)
 <use plots/QCOM_AMD_ratio.png>
-Package pdftex.def Info: plots/QCOM_AMD_ratio.png  used on input line 183.
+Package pdftex.def Info: plots/QCOM_AMD_ratio.png  used on input line 184.
 (pdftex.def)             Requested size: 273.83728pt x 136.91864pt.
 
 Overfull \hbox (99.36436pt too wide) has occurred while \output is active
@@ -1112,7 +1133,7 @@ Overfull \hbox (99.36436pt too wide) has occurred while \output is active
 [13
 
  <./plots/QCOM_AMD_ratio.png>]
-Overfull \hbox (99.36436pt too wide) in paragraph at lines 190--190
+Overfull \hbox (99.36436pt too wide) in paragraph at lines 191--191
  [][]  \OT1/cmss/m/n/6 ([])  
  []
 
@@ -1124,7 +1145,7 @@ Overfull \hbox (99.36436pt too wide) has occurred while \output is active
 [14
 
 ]
-Overfull \hbox (99.36436pt too wide) in paragraph at lines 198--198
+Overfull \hbox (99.36436pt too wide) in paragraph at lines 199--199
  [][]  \OT1/cmss/m/n/6 ([])  
  []
 
@@ -1132,7 +1153,7 @@ Overfull \hbox (99.36436pt too wide) in paragraph at lines 198--198
 File: plots/log_returns_QCOM_NVDA.png Graphic file (type png)
 <use plots/log_returns_QCOM_NVDA.png>
 Package pdftex.def Info: plots/log_returns_QCOM_NVDA.png  used on input line 19
-8.
+9.
 (pdftex.def)             Requested size: 273.83728pt x 148.96906pt.
 
 Overfull \hbox (99.36436pt too wide) has occurred while \output is active
@@ -1142,7 +1163,7 @@ Overfull \hbox (99.36436pt too wide) has occurred while \output is active
 [15
 
  <./plots/log_returns_QCOM_NVDA.png>]
-Overfull \hbox (99.36436pt too wide) in paragraph at lines 222--222
+Overfull \hbox (99.36436pt too wide) in paragraph at lines 223--223
  [][]  \OT1/cmss/m/n/6 ([])  
  []
 
@@ -1154,7 +1175,7 @@ Overfull \hbox (99.36436pt too wide) has occurred while \output is active
 [16
 
 ]
-Overfull \hbox (99.36436pt too wide) in paragraph at lines 237--237
+Overfull \hbox (99.36436pt too wide) in paragraph at lines 238--238
  [][]  \OT1/cmss/m/n/6 ([])  
  []
 
@@ -1166,14 +1187,14 @@ Overfull \hbox (99.36436pt too wide) has occurred while \output is active
 [17
 
 ]
-Overfull \hbox (99.36436pt too wide) in paragraph at lines 245--245
+Overfull \hbox (99.36436pt too wide) in paragraph at lines 246--246
  [][]  \OT1/cmss/m/n/6 ([])  
  []
 
 <plots/ARCH_NVDA.png, id=529, 1383.1675pt x 1190.4475pt>
 File: plots/ARCH_NVDA.png Graphic file (type png)
 <use plots/ARCH_NVDA.png>
-Package pdftex.def Info: plots/ARCH_NVDA.png  used on input line 245.
+Package pdftex.def Info: plots/ARCH_NVDA.png  used on input line 246.
 (pdftex.def)             Requested size: 222.48985pt x 191.47455pt.
 
 Overfull \hbox (99.36436pt too wide) has occurred while \output is active
@@ -1183,14 +1204,14 @@ Overfull \hbox (99.36436pt too wide) has occurred while \output is active
 [18
 
  <./plots/ARCH_NVDA.png>]
-Overfull \hbox (99.36436pt too wide) in paragraph at lines 253--253
+Overfull \hbox (99.36436pt too wide) in paragraph at lines 254--254
  [][]  \OT1/cmss/m/n/6 ([])  
  []
 
 <plots/ARCH_QCOM.png, id=558, 1846.9pt x 1190.4475pt>
 File: plots/ARCH_QCOM.png Graphic file (type png)
 <use plots/ARCH_QCOM.png>
-Package pdftex.def Info: plots/ARCH_QCOM.png  used on input line 253.
+Package pdftex.def Info: plots/ARCH_QCOM.png  used on input line 254.
 (pdftex.def)             Requested size: 273.83728pt x 176.5068pt.
 
 Overfull \hbox (99.36436pt too wide) has occurred while \output is active
@@ -1200,7 +1221,7 @@ Overfull \hbox (99.36436pt too wide) has occurred while \output is active
 [19
 
  <./plots/ARCH_QCOM.png>]
-Overfull \hbox (99.36436pt too wide) in paragraph at lines 270--270
+Overfull \hbox (99.36436pt too wide) in paragraph at lines 271--271
  [][]  \OT1/cmss/m/n/6 ([])  
  []
 
@@ -1212,7 +1233,7 @@ Overfull \hbox (99.36436pt too wide) has occurred while \output is active
 [20
 
 ]
-Overfull \hbox (99.36436pt too wide) in paragraph at lines 286--286
+Overfull \hbox (99.36436pt too wide) in paragraph at lines 287--287
  [][]  \OT1/cmss/m/n/6 ([])  
  []
 
@@ -1224,14 +1245,14 @@ Overfull \hbox (99.36436pt too wide) has occurred while \output is active
 [21
 
 ]
-Overfull \hbox (99.36436pt too wide) in paragraph at lines 294--294
+Overfull \hbox (99.36436pt too wide) in paragraph at lines 295--295
  [][]  \OT1/cmss/m/n/6 ([])  
  []
 
 <plots/GARCH_NVDA.png, id=645, 1846.9pt x 1190.4475pt>
 File: plots/GARCH_NVDA.png Graphic file (type png)
 <use plots/GARCH_NVDA.png>
-Package pdftex.def Info: plots/GARCH_NVDA.png  used on input line 294.
+Package pdftex.def Info: plots/GARCH_NVDA.png  used on input line 295.
 (pdftex.def)             Requested size: 222.48985pt x 143.39247pt.
 
 Overfull \hbox (99.36436pt too wide) has occurred while \output is active
@@ -1241,14 +1262,14 @@ Overfull \hbox (99.36436pt too wide) has occurred while \output is active
 [22
 
  <./plots/GARCH_NVDA.png>]
-Overfull \hbox (99.36436pt too wide) in paragraph at lines 302--302
+Overfull \hbox (99.36436pt too wide) in paragraph at lines 303--303
  [][]  \OT1/cmss/m/n/6 ([])  
  []
 
 <plots/GARCH_QCOM.png, id=674, 2188.175pt x 1190.4475pt>
 File: plots/GARCH_QCOM.png Graphic file (type png)
 <use plots/GARCH_QCOM.png>
-Package pdftex.def Info: plots/GARCH_QCOM.png  used on input line 302.
+Package pdftex.def Info: plots/GARCH_QCOM.png  used on input line 303.
 (pdftex.def)             Requested size: 273.83728pt x 148.96906pt.
 
 Overfull \hbox (99.36436pt too wide) has occurred while \output is active
@@ -1258,7 +1279,7 @@ Overfull \hbox (99.36436pt too wide) has occurred while \output is active
 [23
 
  <./plots/GARCH_QCOM.png>]
-Overfull \hbox (99.36436pt too wide) in paragraph at lines 311--311
+Overfull \hbox (99.36436pt too wide) in paragraph at lines 312--312
  [][]  \OT1/cmss/m/n/6 ([])  
  []
 
@@ -1270,7 +1291,7 @@ Overfull \hbox (99.36436pt too wide) has occurred while \output is active
 [24
 
 ]
-Overfull \hbox (99.36436pt too wide) in paragraph at lines 327--327
+Overfull \hbox (99.36436pt too wide) in paragraph at lines 328--328
  [][]  \OT1/cmss/m/n/6 ([])  
  []
 
@@ -1282,12 +1303,12 @@ Overfull \hbox (99.36436pt too wide) has occurred while \output is active
 [25
 
 ]
-Overfull \hbox (99.36436pt too wide) in paragraph at lines 354--354
+Overfull \hbox (99.36436pt too wide) in paragraph at lines 355--355
  [][]  \OT1/cmss/m/n/6 ([])  
  []
 
 
-Overfull \hbox (3.00035pt too wide) in paragraph at lines 354--354
+Overfull \hbox (3.00035pt too wide) in paragraph at lines 355--355
  [] 
  []
 
@@ -1299,7 +1320,7 @@ Overfull \hbox (99.36436pt too wide) has occurred while \output is active
 [26
 
 ]
-Overfull \hbox (99.36436pt too wide) in paragraph at lines 360--360
+Overfull \hbox (99.36436pt too wide) in paragraph at lines 361--361
  [][]  \OT1/cmss/m/n/6 ([])  
  []
 
@@ -1309,6 +1330,356 @@ Overfull \hbox (99.36436pt too wide) has occurred while \output is active
  []
 
 [27
+
+]
+Overfull \hbox (99.36436pt too wide) in paragraph at lines 375--375
+ [][]  \OT1/cmss/m/n/6 ([])  
+ []
+
+
+Overfull \hbox (99.36436pt too wide) has occurred while \output is active
+ [][]  \OT1/cmss/m/n/6 ([])  
+ []
+
+[28
+
+]
+Overfull \hbox (99.36436pt too wide) in paragraph at lines 388--388
+ [][]  \OT1/cmss/m/n/6 ([])  
+ []
+
+
+Overfull \hbox (99.36436pt too wide) has occurred while \output is active
+ [][]  \OT1/cmss/m/n/6 ([])  
+ []
+
+[29
+
+]
+Overfull \hbox (99.36436pt too wide) in paragraph at lines 398--398
+ [][]  \OT1/cmss/m/n/6 ([])  
+ []
+
+<plots/nvda_hist_var_plot.png, id=869, 436.63126pt x 280.79906pt>
+File: plots/nvda_hist_var_plot.png Graphic file (type png)
+<use plots/nvda_hist_var_plot.png>
+Package pdftex.def Info: plots/nvda_hist_var_plot.png  used on input line 398.
+(pdftex.def)             Requested size: 154.03183pt x 99.05666pt.
+<plots/qcom_hist_var_plot.png, id=870, 526.96875pt x 316.18124pt>
+File: plots/qcom_hist_var_plot.png Graphic file (type png)
+<use plots/qcom_hist_var_plot.png>
+Package pdftex.def Info: plots/qcom_hist_var_plot.png  used on input line 398.
+(pdftex.def)             Requested size: 154.03183pt x 92.41872pt.
+
+Overfull \hbox (99.36436pt too wide) has occurred while \output is active
+ [][]  \OT1/cmss/m/n/6 ([])  
+ []
+
+[30
+
+ <./plots/nvda_hist_var_plot.png> <./plots/qcom_hist_var_plot.png>]
+Overfull \hbox (99.36436pt too wide) in paragraph at lines 406--406
+ [][]  \OT1/cmss/m/n/6 ([])  
+ []
+
+<plots/nvda_hist_var_marked.png, id=900, 685.8122pt x 369.63094pt>
+File: plots/nvda_hist_var_marked.png Graphic file (type png)
+<use plots/nvda_hist_var_marked.png>
+Package pdftex.def Info: plots/nvda_hist_var_marked.png  used on input line 406
+.
+(pdftex.def)             Requested size: 290.9531pt x 156.81752pt.
+
+Overfull \hbox (99.36436pt too wide) has occurred while \output is active
+ [][]  \OT1/cmss/m/n/6 ([])  
+ []
+
+[31
+
+ <./plots/nvda_hist_var_marked.png>]
+Overfull \hbox (99.36436pt too wide) in paragraph at lines 414--414
+ [][]  \OT1/cmss/m/n/6 ([])  
+ []
+
+<plots/qcom_hist_var_marked.png, id=930, 694.84593pt x 362.10281pt>
+File: plots/qcom_hist_var_marked.png Graphic file (type png)
+<use plots/qcom_hist_var_marked.png>
+Package pdftex.def Info: plots/qcom_hist_var_marked.png  used on input line 414
+.
+(pdftex.def)             Requested size: 290.9531pt x 151.61801pt.
+
+Overfull \hbox (99.36436pt too wide) has occurred while \output is active
+ [][]  \OT1/cmss/m/n/6 ([])  
+ []
+
+[32
+
+ <./plots/qcom_hist_var_marked.png>]
+Overfull \hbox (99.36436pt too wide) in paragraph at lines 422--422
+ [][]  \OT1/cmss/m/n/6 ([])  
+ []
+
+
+Overfull \hbox (99.36436pt too wide) has occurred while \output is active
+ [][]  \OT1/cmss/m/n/6 ([])  
+ []
+
+[33
+
+]
+Overfull \hbox (99.36436pt too wide) in paragraph at lines 435--435
+ [][]  \OT1/cmss/m/n/6 ([])  
+ []
+
+
+Overfull \hbox (99.36436pt too wide) has occurred while \output is active
+ [][]  \OT1/cmss/m/n/6 ([])  
+ []
+
+[34
+
+]
+Overfull \hbox (99.36436pt too wide) in paragraph at lines 443--443
+ [][]  \OT1/cmss/m/n/6 ([])  
+ []
+
+<plots/nvda_parametric_var_hist.png, id=1014, 591.71063pt x 283.0575pt>
+File: plots/nvda_parametric_var_hist.png Graphic file (type png)
+<use plots/nvda_parametric_var_hist.png>
+Package pdftex.def Info: plots/nvda_parametric_var_hist.png  used on input line
+ 443.
+(pdftex.def)             Requested size: 290.9531pt x 139.18744pt.
+
+Overfull \hbox (99.36436pt too wide) has occurred while \output is active
+ [][]  \OT1/cmss/m/n/6 ([])  
+ []
+
+[35
+
+ <./plots/nvda_parametric_var_hist.png>]
+Overfull \hbox (99.36436pt too wide) in paragraph at lines 451--451
+ [][]  \OT1/cmss/m/n/6 ([])  
+ []
+
+<plots/qcom_parametric_var_hist.png, id=1043, 602.25pt x 287.57437pt>
+File: plots/qcom_parametric_var_hist.png Graphic file (type png)
+<use plots/qcom_parametric_var_hist.png>
+Package pdftex.def Info: plots/qcom_parametric_var_hist.png  used on input line
+ 451.
+(pdftex.def)             Requested size: 290.9531pt x 138.93367pt.
+
+Overfull \hbox (99.36436pt too wide) has occurred while \output is active
+ [][]  \OT1/cmss/m/n/6 ([])  
+ []
+
+[36
+
+ <./plots/qcom_parametric_var_hist.png>]
+Overfull \hbox (99.36436pt too wide) in paragraph at lines 459--459
+ [][]  \OT1/cmss/m/n/6 ([])  
+ []
+
+<plots/nvda_density_plot.png, id=1073, 795.72281pt x 380.92313pt>
+File: plots/nvda_density_plot.png Graphic file (type png)
+<use plots/nvda_density_plot.png>
+Package pdftex.def Info: plots/nvda_density_plot.png  used on input line 459.
+(pdftex.def)             Requested size: 290.9531pt x 139.2828pt.
+
+Overfull \hbox (99.36436pt too wide) has occurred while \output is active
+ [][]  \OT1/cmss/m/n/6 ([])  
+ []
+
+[37
+
+ <./plots/nvda_density_plot.png>]
+Overfull \hbox (99.36436pt too wide) in paragraph at lines 467--467
+ [][]  \OT1/cmss/m/n/6 ([])  
+ []
+
+<plots/qcom_density_plot.png, id=1103, 850.67813pt x 407.27156pt>
+File: plots/qcom_density_plot.png Graphic file (type png)
+<use plots/qcom_density_plot.png>
+Package pdftex.def Info: plots/qcom_density_plot.png  used on input line 467.
+(pdftex.def)             Requested size: 290.9531pt x 139.29701pt.
+
+Overfull \hbox (99.36436pt too wide) has occurred while \output is active
+ [][]  \OT1/cmss/m/n/6 ([])  
+ []
+
+[38
+
+ <./plots/qcom_density_plot.png>]
+Overfull \hbox (99.36436pt too wide) in paragraph at lines 477--477
+ [][]  \OT1/cmss/m/n/6 ([])  
+ []
+
+
+Overfull \hbox (99.36436pt too wide) has occurred while \output is active
+ [][]  \OT1/cmss/m/n/6 ([])  
+ []
+
+[39
+
+]
+Overfull \hbox (99.36436pt too wide) in paragraph at lines 496--496
+ [][]  \OT1/cmss/m/n/6 ([])  
+ []
+
+
+Overfull \hbox (99.36436pt too wide) has occurred while \output is active
+ [][]  \OT1/cmss/m/n/6 ([])  
+ []
+
+[40
+
+]
+Overfull \hbox (99.36436pt too wide) in paragraph at lines 507--507
+ [][]  \OT1/cmss/m/n/6 ([])  
+ []
+
+<plots/nvda_garch_vol.png, id=1187, 591.71063pt x 283.81032pt>
+File: plots/nvda_garch_vol.png Graphic file (type png)
+<use plots/nvda_garch_vol.png>
+Package pdftex.def Info: plots/nvda_garch_vol.png  used on input line 507.
+(pdftex.def)             Requested size: 154.03183pt x 73.87988pt.
+<plots/qcom_garch_vol.png, id=1188, 591.71063pt x 283.81032pt>
+File: plots/qcom_garch_vol.png Graphic file (type png)
+<use plots/qcom_garch_vol.png>
+Package pdftex.def Info: plots/qcom_garch_vol.png  used on input line 507.
+(pdftex.def)             Requested size: 154.03183pt x 73.87988pt.
+
+Overfull \hbox (99.36436pt too wide) has occurred while \output is active
+ [][]  \OT1/cmss/m/n/6 ([])  
+ []
+
+[41
+
+ <./plots/nvda_garch_vol.png> <./plots/qcom_garch_vol.png>]
+Overfull \hbox (99.36436pt too wide) in paragraph at lines 516--516
+ [][]  \OT1/cmss/m/n/6 ([])  
+ []
+
+File: plots/nvda_garch_vol.png Graphic file (type png)
+<use plots/nvda_garch_vol.png>
+Package pdftex.def Info: plots/nvda_garch_vol.png  used on input line 516.
+(pdftex.def)             Requested size: 290.9531pt x 139.55762pt.
+
+Overfull \hbox (99.36436pt too wide) has occurred while \output is active
+ [][]  \OT1/cmss/m/n/6 ([])  
+ []
+
+[42
+
+]
+Overfull \hbox (99.36436pt too wide) in paragraph at lines 525--525
+ [][]  \OT1/cmss/m/n/6 ([])  
+ []
+
+File: plots/qcom_garch_vol.png Graphic file (type png)
+<use plots/qcom_garch_vol.png>
+Package pdftex.def Info: plots/qcom_garch_vol.png  used on input line 525.
+(pdftex.def)             Requested size: 290.9531pt x 139.55762pt.
+
+Overfull \hbox (99.36436pt too wide) has occurred while \output is active
+ [][]  \OT1/cmss/m/n/6 ([])  
+ []
+
+[43
+
+]
+Overfull \hbox (99.36436pt too wide) in paragraph at lines 543--543
+ [][]  \OT1/cmss/m/n/6 ([])  
+ []
+
+
+Overfull \hbox (99.36436pt too wide) has occurred while \output is active
+ [][]  \OT1/cmss/m/n/6 ([])  
+ []
+
+[44
+
+]
+Overfull \hbox (99.36436pt too wide) in paragraph at lines 572--572
+ [][]  \OT1/cmss/m/n/6 ([])  
+ []
+
+
+Overfull \hbox (99.36436pt too wide) has occurred while \output is active
+ [][]  \OT1/cmss/m/n/6 ([])  
+ []
+
+[45
+
+]
+Overfull \hbox (99.36436pt too wide) in paragraph at lines 582--582
+ [][]  \OT1/cmss/m/n/6 ([])  
+ []
+
+
+Overfull \hbox (99.36436pt too wide) has occurred while \output is active
+ [][]  \OT1/cmss/m/n/6 ([])  
+ []
+
+[46
+
+]
+Overfull \hbox (99.36436pt too wide) in paragraph at lines 593--593
+ [][]  \OT1/cmss/m/n/6 ([])  
+ []
+
+
+Overfull \hbox (99.36436pt too wide) has occurred while \output is active
+ [][]  \OT1/cmss/m/n/6 ([])  
+ []
+
+[47
+
+]
+Overfull \hbox (99.36436pt too wide) in paragraph at lines 616--616
+ [][]  \OT1/cmss/m/n/6 ([])  
+ []
+
+
+Overfull \hbox (99.36436pt too wide) has occurred while \output is active
+ [][]  \OT1/cmss/m/n/6 ([])  
+ []
+
+[48
+
+]
+Overfull \hbox (99.36436pt too wide) in paragraph at lines 625--625
+ [][]  \OT1/cmss/m/n/6 ([])  
+ []
+
+
+Overfull \hbox (99.36436pt too wide) has occurred while \output is active
+ [][]  \OT1/cmss/m/n/6 ([])  
+ []
+
+[49
+
+]
+Overfull \hbox (99.36436pt too wide) in paragraph at lines 634--634
+ [][]  \OT1/cmss/m/n/6 ([])  
+ []
+
+
+Overfull \hbox (99.36436pt too wide) has occurred while \output is active
+ [][]  \OT1/cmss/m/n/6 ([])  
+ []
+
+[50
+
+]
+Overfull \hbox (99.36436pt too wide) in paragraph at lines 644--644
+ [][]  \OT1/cmss/m/n/6 ([])  
+ []
+
+
+Overfull \hbox (99.36436pt too wide) has occurred while \output is active
+ [][]  \OT1/cmss/m/n/6 ([])  
+ []
+
+[51
 
 ]
 \tf@nav=\write6
@@ -1329,11 +1700,11 @@ Package rerunfilecheck Info: File `document.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 21940 strings out of 474116
- 427340 string characters out of 5743682
+ 22238 strings out of 474116
+ 432681 string characters out of 5743682
  1944187 words of memory out of 5000000
- 43786 multiletter control sequences out of 15000+600000
- 567220 words of font info for 69 fonts, out of 8000000 for 9000
+ 44029 multiletter control sequences out of 15000+600000
+ 568764 words of font info for 74 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  127i,15n,123p,410b,606s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb
@@ -1348,10 +1719,10 @@ local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr
 local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/l
 ocal/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/loc
 al/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on document.pdf (27 pages, 987715 bytes).
+Output written on document.pdf (51 pages, 1121624 bytes).
 PDF statistics:
- 878 PDF objects out of 1000 (max. 8388607)
- 753 compressed objects within 8 object streams
- 61 named destinations out of 1000 (max. 500000)
- 146 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1571 PDF objects out of 1728 (max. 8388607)
+ 1371 compressed objects within 14 object streams
+ 109 named destinations out of 1000 (max. 500000)
+ 196 words of extra memory for PDF output out of 10000 (max. 10000000)
 
