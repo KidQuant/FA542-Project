@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.2.21)  5 MAY 2025 18:31
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.2.21)  7 MAY 2025 11:39
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1184,17 +1184,7 @@ File: plots/residual_plot_1_1.png Graphic file (type png)
 <use plots/residual_plot_1_1.png>
 Package pdftex.def Info: plots/residual_plot_1_1.png  used on input line 604.
 (pdftex.def)             Requested size: 469.75502pt x 208.54503pt.
-<plots/cumulative_returns.png, id=229, 1166.3575pt x 561.09625pt>
-File: plots/cumulative_returns.png Graphic file (type png)
-<use plots/cumulative_returns.png>
-Package pdftex.def Info: plots/cumulative_returns.png  used on input line 611.
-(pdftex.def)             Requested size: 422.77664pt x 203.38147pt.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[23 <./plots/residual_plot_1_1.png>] [24 <./plots/cumulative_returns.png>]
-(./report_3.aux)
+ [23 <./plots/residual_plot_1_1.png>] (./report_3.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
@@ -1211,10 +1201,10 @@ Package rerunfilecheck Info: File `report_3.out' has not changed.
 (rerunfilecheck)             Checksum: A2B27B10D1DC9DDB44A1411E8226B301;730.
  ) 
 Here is how much of TeX's memory you used:
- 35463 strings out of 474116
- 810428 string characters out of 5743682
+ 35452 strings out of 474116
+ 810150 string characters out of 5743682
  1946187 words of memory out of 5000000
- 57187 multiletter control sequences out of 15000+600000
+ 57180 multiletter control sequences out of 15000+600000
  574008 words of font info for 101 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  102i,20n,107p,844b,609s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -1234,10 +1224,10 @@ e/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/
 024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/local/texlive/202
 4/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive
 /2024/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb>
-Output written on report_3.pdf (24 pages, 769433 bytes).
+Output written on report_3.pdf (23 pages, 709579 bytes).
 PDF statistics:
- 335 PDF objects out of 1000 (max. 8388607)
- 246 compressed objects within 3 object streams
- 90 named destinations out of 1000 (max. 500000)
- 115 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 326 PDF objects out of 1000 (max. 8388607)
+ 240 compressed objects within 3 object streams
+ 86 named destinations out of 1000 (max. 500000)
+ 110 words of extra memory for PDF output out of 10000 (max. 10000000)
 
