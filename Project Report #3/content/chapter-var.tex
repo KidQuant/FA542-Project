@@ -87,7 +87,12 @@ To formally test and model cointegrated systems, particularly in higher dimensio
 \end{equation}
 Here, the matrix \( \Pi = \Phi_1 + \cdots + \Phi_p - I \) captures the long-run relationships, while \( \Phi_i^* \) represent short-run dynamics. The key insight is that the rank of \( \Pi \) determines the cointegration structure: if \( \text{rank}(\Pi) = r < k \), then there exist \( r \) cointegrating vectors, and we can factor \( \Pi \) as \( \alpha \beta' \), where \( \beta \) contains the cointegrating vectors and \( \alpha \) reflects the speed of adjustment toward long-run equilibrium.
 
-
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.5\linewidth]{content/plots/engle_granger.png}
+	\caption{Cointegration Plot of Our Sample Securities using the Johansen Test}
+	\label{fig:engle_granger}
+\end{figure}
 
 Cointegration has significant implications in financial applications. For instance, in pairs trading, if two stock prices are cointegrated, the spread \( w_t = p_{1t} - \gamma p_{2t} \) will be mean-reverting, allowing traders to exploit deviations from the equilibrium for profit. A trading strategy might involve taking a long position in one stock and a short position in the other when the spread deviates from its historical mean by a certain threshold. 
 
@@ -101,4 +106,5 @@ The Johansen test, based on estimating the rank of \( \Pi \) in the VECM, is the
 So increasing the assumed rank and testing how many stationary combinations exists. 
 
 
-Figure (\ref{fig:amd_qcom_cumul_returns}) shows the cumulative returns for both QCOM and AMD. The two series seem to trach each other, especially in the later half of the sample. This suggest that a stationary spread may exists ($\omega_t=\text{QCOM}_t-\gamma\cdot\text{AMD}_t$). 
+Figure (\ref{fig:sample_securities}) shows the cumulative returns for securities in our universe. These securities are in the same industry as QCOM This involves assets such as AAPL, AMD, INTU, MSFT, NDVA, and QCOM. As we can see, some assets appear to move together, such as INTU, QCOM, MSFT, and AMD. Compared to AAPL and NVDA, they all have smaller cumulative returns. The question is whether these securites are cointegrated with QCOM. Figure (\ref{fig:engle_granger}) plots the heatmap of the Johansen test of the sample securites in our universe. The interval for the test is between 2017 and 2025. At the heat map shows, there are only three pairs of securities where we reject the null hypothesis of no cointegration: AMD with INTU, MSFT with INTU, and QCOM with INTU.
+

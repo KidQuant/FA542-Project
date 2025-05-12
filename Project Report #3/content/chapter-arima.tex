@@ -2,6 +2,8 @@
 
 The goal of this section is to fit log prices and log returns into an autoregressive (AR), moving average (MA), or some combination of the two (ARMA, ARIMA). Figure (\ref{fig:acf_pacf_log_price_returns}) shows the ACF for the log prices (a), PACF of the log prices (b), ACF for the log returns (c) and the PACF for the log returns (d). For AR models, we would expect the ACF to show a gradual decay where the tail cuts off at some point, where the PACF would sharply cut off at lag $p$, then drop to approximately zero. We expect the opposite for MA models, where the ACF significantly cuts off at lag $q$ (then drops off to near zero), and the ACF gradually decays. On the other hand, the ACF and PACF for the ARMA(p,q) model will not clearly indicate where the lags cut off. 
 
+\section{ARMA Model}
+
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=1\linewidth]{content/plots/acf_pacf_log_price_returns.png}

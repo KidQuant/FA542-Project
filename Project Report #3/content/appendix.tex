@@ -14,9 +14,16 @@
 		\label{fig:amd_qcom_cumul_returns}
 	\end{figure}
 	
+		\begin{figure}[!h]
+		\centering
+		\includegraphics[width=0.8\linewidth]{content/plots/visualization.png}
+		\caption{Cumulative Returns of QCOM and AMD}
+		\label{fig:sample_securities}
+	\end{figure}
+	
 	\chapter{Tables}
 	
-	\begin{table}[ht]
+	\begin{table}[!h]
 		\centering
 		\caption{Ljung-Box Test Model Fit}
 		\begin{tabular}[t]{lccccc}
@@ -28,5 +35,22 @@
 			\bottomrule
 		\end{tabular}\label{tab:ARCH_GARCH}
 	\end{table}
+	
+	\begin{table}[!h]
+		\centering
+		\caption{Information Criteria for GARCH-type Models}
+		\begin{tabular}{lcccc}
+			\toprule
+			\textbf{Model} & \textbf{Akaike} & \textbf{Bayes} & \textbf{Shibata} & \textbf{Hannan-Quinn} \\
+			\midrule
+			GARCH(1,1)     & -2.020259 & -1.896058 & -2.022828 & -1.970093 \\
+			EGARCH         & \textcolor{red}{-2.064928} & -1.909676 & -2.068896 & -2.002220 \\
+			GJR-GARCH      & -2.049684 & -1.894432 & -2.053652 & -1.986976 \\
+			IGARCH         & -2.024722 & -1.916046 & -2.026700 & -1.980826 \\
+			TGARCH         & -2.045296 & -1.905569 & -2.048528 & -1.988858 \\
+			\bottomrule
+		\end{tabular}\label{tab:GARCH_model}
+	\end{table}
+	
 
 \end{appendices}

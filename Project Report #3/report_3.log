@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.2.21)  12 MAY 2025 01:09
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.2.21)  12 MAY 2025 18:14
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1020,7 +1020,7 @@ Package hyperref Info: Link coloring ON on input line 70.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
  (./content/titlepages.tex
-<title.png, id=79, 651.44789pt x 488.58592pt>
+<title.png, id=107, 651.44789pt x 488.58592pt>
 File: title.png Graphic file (type png)
 <use title.png>
 Package pdftex.def Info: title.png  used on input line 8.
@@ -1037,22 +1037,23 @@ File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 LaTeX Font Info:    Trying to load font information for U+msb on input line 2.
 (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-))
-\tf@toc=\write5
-\openout5 = `report_3.toc'.
-
-
+)
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.76 \cleardoublepage
-                      [1
+l.25 ...}{\numberline {B}Tables}{35}{appendix.1.B}
+                                                  % [1
 
 
-] (./content/chapter-background.tex
+])
+\tf@toc=\write5
+\openout5 = `report_3.toc'.
+
+ [2]
+(./content/chapter-background.tex
 Chapter 1.
-[2
+[3
 
 
 ]
@@ -1060,7 +1061,7 @@ Overfull \hbox (1.0893pt too wide) in paragraph at lines 32--39
  [][][] 
  []
 
-[3]
+[4]
 LaTeX Font Info:    Calculating math sizes for size <8.4> on input line 61.
 
 
@@ -1075,21 +1076,21 @@ LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <4.2> not available
 LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <4.2> not available
 (Font)              size <5> substituted on input line 61.
 
-) (./content/chapter-visualizations.tex [4] [5]
+) (./content/chapter-visualizations.tex [5] [6]
 Chapter 2.
-<content/plots/cumulative_returns_qcom.png, id=144, 1158.3275pt x 561.09625pt>
+<content/plots/cumulative_returns_qcom.png, id=185, 1158.3275pt x 561.09625pt>
 File: content/plots/cumulative_returns_qcom.png Graphic file (type png)
 <use content/plots/cumulative_returns_qcom.png>
 Package pdftex.def Info: content/plots/cumulative_returns_qcom.png  used on inp
 ut line 5.
 (pdftex.def)             Requested size: 422.77664pt x 204.79414pt.
-[6
+[7
 
  <./content/plots/cumulative_returns_qcom.png>]
 
-LaTeX Warning: Reference `fig:acf_plot' on page 7 undefined on input line 26.
+LaTeX Warning: Reference `fig:acf_plot' on page 8 undefined on input line 26.
 
-<content/plots/qcom_acf_pacf.png, id=154, 986.9372pt x 438.8897pt>
+<content/plots/qcom_acf_pacf.png, id=194, 986.9372pt x 438.8897pt>
 File: content/plots/qcom_acf_pacf.png Graphic file (type png)
 <use content/plots/qcom_acf_pacf.png>
 Package pdftex.def Info: content/plots/qcom_acf_pacf.png  used on input line 30
@@ -1098,56 +1099,56 @@ Package pdftex.def Info: content/plots/qcom_acf_pacf.png  used on input line 30
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[7]
+[8]
 
-LaTeX Warning: Reference `fig:pacf_plot' on page 8 undefined on input line 41.
+LaTeX Warning: Reference `fig:pacf_plot' on page 9 undefined on input line 41.
 
-[8 <./content/plots/qcom_acf_pacf.png>]
-<content/plots/qcom_log_price_return.png, id=170, 817.55438pt x 385.44pt>
+[9 <./content/plots/qcom_acf_pacf.png>]
+<content/plots/qcom_log_price_return.png, id=209, 817.55438pt x 385.44pt>
 File: content/plots/qcom_log_price_return.png Graphic file (type png)
 <use content/plots/qcom_log_price_return.png>
 Package pdftex.def Info: content/plots/qcom_log_price_return.png  used on input
  line 67.
 (pdftex.def)             Requested size: 422.77664pt x 199.32426pt.
- [9 <./content/plots/qcom_log_price_return.png>]
-<content/plots/acf_plot_time_series.png, id=183, 839.38594pt x 511.9125pt>
+ [10 <./content/plots/qcom_log_price_return.png>]
+<content/plots/acf_plot_time_series.png, id=222, 839.38594pt x 511.9125pt>
 File: content/plots/acf_plot_time_series.png Graphic file (type png)
 <use content/plots/acf_plot_time_series.png>
 Package pdftex.def Info: content/plots/acf_plot_time_series.png  used on input 
 line 91.
 (pdftex.def)             Requested size: 469.75502pt x 286.4894pt.
- [10 <./content/plots/acf_plot_time_series.png>])
-(./content/chapter-arima.tex [11]
+ [11 <./content/plots/acf_plot_time_series.png>])
+(./content/chapter-arima.tex [12]
 Chapter 3.
-<content/plots/acf_pacf_log_price_returns.png, id=196, 840.13875pt x 511.9125pt
+<content/plots/acf_pacf_log_price_returns.png, id=236, 840.13875pt x 511.9125pt
 >
 File: content/plots/acf_pacf_log_price_returns.png Graphic file (type png)
 <use content/plots/acf_pacf_log_price_returns.png>
 Package pdftex.def Info: content/plots/acf_pacf_log_price_returns.png  used on 
-input line 7.
+input line 9.
 (pdftex.def)             Requested size: 469.75502pt x 286.23163pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[12
+[13
 
-] [13 <./content/plots/acf_pacf_log_price_returns.png>] [14]
-<content/plots/forecast.png, id=219, 986.9372pt x 438.8897pt>
+] [14 <./content/plots/acf_pacf_log_price_returns.png>] [15]
+<content/plots/forecast.png, id=258, 986.9372pt x 438.8897pt>
 File: content/plots/forecast.png Graphic file (type png)
 <use content/plots/forecast.png>
-Package pdftex.def Info: content/plots/forecast.png  used on input line 71.
+Package pdftex.def Info: content/plots/forecast.png  used on input line 73.
 (pdftex.def)             Requested size: 469.75502pt x 208.90337pt.
- [15 <./content/plots/forecast.png>]
-<content/plots/residual_plot_212.png, id=228, 986.9372pt x 438.13687pt>
+ [16 <./content/plots/forecast.png>]
+<content/plots/residual_plot_212.png, id=267, 986.9372pt x 438.13687pt>
 File: content/plots/residual_plot_212.png Graphic file (type png)
 <use content/plots/residual_plot_212.png>
 Package pdftex.def Info: content/plots/residual_plot_212.png  used on input lin
-e 83.
+e 85.
 (pdftex.def)             Requested size: 469.75502pt x 208.54503pt.
- [16 <./content/plots/residual_plot_212.png>])
-(./content/chapter-var.tex [17]
+ [17 <./content/plots/residual_plot_212.png>])
+(./content/chapter-var.tex [18]
 Chapter 4.
-<content/plots/amd_qcom_scatter.png, id=241, 714.7503pt x 570.933pt>
+<content/plots/amd_qcom_scatter.png, id=281, 714.7503pt x 570.933pt>
 File: content/plots/amd_qcom_scatter.png Graphic file (type png)
 <use content/plots/amd_qcom_scatter.png>
 Package pdftex.def Info: content/plots/amd_qcom_scatter.png  used on input line
@@ -1156,21 +1157,28 @@ Package pdftex.def Info: content/plots/amd_qcom_scatter.png  used on input line
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[18
+[19
 
-] [19 <./content/plots/amd_qcom_scatter.png>] [20])
-(./content/chapter-arch-garch.tex [21]
+] [20 <./content/plots/amd_qcom_scatter.png>] [21]
+<content/plots/engle_granger.png, id=307, 574.5465pt x 590.4459pt>
+File: content/plots/engle_granger.png Graphic file (type png)
+<use content/plots/engle_granger.png>
+Package pdftex.def Info: content/plots/engle_granger.png  used on input line 92
+.
+(pdftex.def)             Requested size: 234.8775pt x 241.38164pt.
+ [22 <./content/plots/engle_granger.png>]) (./content/chapter-arch-garch.tex [2
+3]
 Chapter 5.
-<content/plots/qcom_log_returns.png, id=275, 1398.22375pt x 776.9025pt>
+<content/plots/qcom_log_returns.png, id=323, 1398.22375pt x 776.9025pt>
 File: content/plots/qcom_log_returns.png Graphic file (type png)
 <use content/plots/qcom_log_returns.png>
 Package pdftex.def Info: content/plots/qcom_log_returns.png  used on input line
  12.
 (pdftex.def)             Requested size: 375.80544pt x 208.80624pt.
-[22
+[24
 
  <./content/plots/qcom_log_returns.png>]
-<content/plots/ACF_PACF_squared_residuals_QCOM.png, id=284, 1606.0pt x 799.9887
+<content/plots/ACF_PACF_squared_residuals_QCOM.png, id=333, 1606.0pt x 799.9887
 5pt>
 File: content/plots/ACF_PACF_squared_residuals_QCOM.png Graphic file (type png)
 
@@ -1178,8 +1186,8 @@ File: content/plots/ACF_PACF_squared_residuals_QCOM.png Graphic file (type png)
 Package pdftex.def Info: content/plots/ACF_PACF_squared_residuals_QCOM.png  use
 d on input line 26.
 (pdftex.def)             Requested size: 399.29463pt x 198.89807pt.
- [23 <./content/plots/ACF_PACF_squared_residuals_QCOM.png>]
-<content/plots/acf_pacf_std_resid.png, id=292, 1606.0pt x 799.98875pt>
+ [25 <./content/plots/ACF_PACF_squared_residuals_QCOM.png>]
+<content/plots/acf_pacf_std_resid.png, id=341, 1606.0pt x 799.98875pt>
 File: content/plots/acf_pacf_std_resid.png Graphic file (type png)
 <use content/plots/acf_pacf_std_resid.png>
 Package pdftex.def Info: content/plots/acf_pacf_std_resid.png  used on input li
@@ -1191,40 +1199,51 @@ Overfull \hbox (4.84715pt too wide) in paragraph at lines 57--58
 s from GARCH(1,1) with ARMA(0,2)
  []
 
-[24 <./content/plots/acf_pacf_std_resid.png>]
-<content/plots/acf_pacf_squared_resid.png, id=304, 1606.0pt x 799.98875pt>
+[26 <./content/plots/acf_pacf_std_resid.png>]
+<content/plots/acf_pacf_squared_resid.png, id=351, 1606.0pt x 799.98875pt>
 File: content/plots/acf_pacf_squared_resid.png Graphic file (type png)
 <use content/plots/acf_pacf_squared_resid.png>
 Package pdftex.def Info: content/plots/acf_pacf_squared_resid.png  used on inpu
 t line 63.
 (pdftex.def)             Requested size: 399.29463pt x 198.89807pt.
- [25 <./content/plots/acf_pacf_squared_resid.png>] [26]
-<content/plots/GARCH_forecast.png, id=319, 1606.0pt x 799.98875pt>
+ [27 <./content/plots/acf_pacf_squared_resid.png>] [28] [29] [30{/usr/local/tex
+live/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]
+<content/plots/GARCH_forecast.png, id=382, 1606.0pt x 799.98875pt>
 File: content/plots/GARCH_forecast.png Graphic file (type png)
 <use content/plots/GARCH_forecast.png>
 Package pdftex.def Info: content/plots/GARCH_forecast.png  used on input line 1
-14.
+63.
 (pdftex.def)             Requested size: 399.29463pt x 198.89807pt.
- [27 <./content/plots/GARCH_forecast.png>]) [28]
-(./content/appendix.tex
+ [31 <./content/plots/GARCH_forecast.png>])
+[32] (./content/appendix.tex
 Appendix A.
-<content/plots/residual_plot_1_1.png, id=331, 986.9372pt x 438.13687pt>
+<content/plots/residual_plot_1_1.png, id=394, 986.9372pt x 438.13687pt>
 File: content/plots/residual_plot_1_1.png Graphic file (type png)
 <use content/plots/residual_plot_1_1.png>
 Package pdftex.def Info: content/plots/residual_plot_1_1.png  used on input lin
 e 5.
 (pdftex.def)             Requested size: 328.82707pt x 145.97617pt.
-<content/plots/QCOM_AMD.png, id=332, 859.2903pt x 426.393pt>
+<content/plots/QCOM_AMD.png, id=395, 859.2903pt x 426.393pt>
 File: content/plots/QCOM_AMD.png Graphic file (type png)
 <use content/plots/QCOM_AMD.png>
 Package pdftex.def Info: content/plots/QCOM_AMD.png  used on input line 12.
 (pdftex.def)             Requested size: 375.80544pt x 186.48141pt.
-[29
+<content/plots/visualization.png, id=396, 1166.3575pt x 561.09625pt>
+File: content/plots/visualization.png Graphic file (type png)
+<use content/plots/visualization.png>
+Package pdftex.def Info: content/plots/visualization.png  used on input line 19
+.
+(pdftex.def)             Requested size: 375.80544pt x 180.78734pt.
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[33
 
 
  <./content/plots/residual_plot_1_1.png> <./content/plots/QCOM_AMD.png>]
+[34 <./content/plots/visualization.png>]
 Appendix B.
-) [30
+) [35
 
 ] (./report_3.aux)
  ***********
@@ -1240,16 +1259,16 @@ LaTeX Font Warning: Size substitutions with differences
 LaTeX Warning: There were undefined references.
 
 Package rerunfilecheck Info: File `report_3.out' has not changed.
-(rerunfilecheck)             Checksum: 236ADD37027BD845D543759AA86C35C6;2285.
+(rerunfilecheck)             Checksum: B2274E2295817281F934CEE2EC45F0C0;3036.
  ) 
 Here is how much of TeX's memory you used:
- 35548 strings out of 474116
- 813551 string characters out of 5743682
- 1947187 words of memory out of 5000000
- 57241 multiletter control sequences out of 15000+600000
- 572283 words of font info for 93 fonts, out of 8000000 for 9000
+ 35598 strings out of 474116
+ 814585 string characters out of 5743682
+ 1946187 words of memory out of 5000000
+ 57270 multiletter control sequences out of 15000+600000
+ 572620 words of font info for 94 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 102i,20n,107p,923b,609s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 102i,20n,107p,925b,609s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
 ></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb>
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb><
@@ -1263,11 +1282,12 @@ xlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texl
 ive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texliv
 e/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive
 /2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/local/texlive/2
-024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on report_3.pdf (31 pages, 854882 bytes).
+024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texli
+ve/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb>
+Output written on report_3.pdf (36 pages, 944613 bytes).
 PDF statistics:
- 428 PDF objects out of 1000 (max. 8388607)
- 332 compressed objects within 4 object streams
- 99 named destinations out of 1000 (max. 500000)
- 237 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 506 PDF objects out of 1000 (max. 8388607)
+ 399 compressed objects within 4 object streams
+ 118 named destinations out of 1000 (max. 500000)
+ 303 words of extra memory for PDF output out of 10000 (max. 10000000)
 

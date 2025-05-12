@@ -67,7 +67,7 @@ Figure (\ref{fig:acf_pacf_squared_resid}) shows the ACF/PACF plots for squared r
 
 This shows that there may be some remaining ARCH effects in the model, and more refinement is necessary.
 
-We find the the optimal GARCH orders by using the EACF, which involves  locating the corner of insignificant autocorrelations (marked o); a similiar process for identifying the optimal ARIMA model. As we can see Table (\ref{tab:eacf_garch}) shows the first clear triangle which starts at AR=1 (GARCH Term) and MA=4 (ARCH term), suggesting a GARCH(1,1) specification, which is our first model of choice.
+We find the the optimal GARCH orders by using the EACF, which involves  locating the corner of insignificant autocorrelations (marked o); a similiar process for identifying the optimal ARIMA model. As we can see Table (\ref{tab:eacf_garch}) shows the first clear triangle which starts at AR=1 (GARCH Term) and MA=4 (ARCH term), suggesting a GARCH(1,1) specification, which is our first model of choice. Since higher orders of GARCH will not necessarily improve the model (according to the AIC), we can use extensions of GARCH, such as EGARCH and and GJR-GARCH.
 
 \begin{table}[H]
 	\centering
@@ -87,14 +87,51 @@ We find the the optimal GARCH orders by using the EACF, which involves  locating
 	\end{tabular}
 \end{table}
 
-\section{Forecasting}
+\section{GARCH Extension}
 
-An ARMA(2,2)-GARCH(1,1) model combines an Autoregressive Moving Average (ARMA) model for the conditional mean of a time series with a Generalized Autoregressive Conditional Heteroskedasticity (GARCH) model for its conditional variance. The mathematical derivation for the ARMA(2,2)
+\subsection{EGARCH}
+
+The Exponential GARCH (EGARCH) model  is a generalized form of the traditional GARCH model that captures asymmetric volatility responses to shocks in financial time series. Unlike standard GARCH models that impose positivity constraints on parameters to ensure a positive conditional variance, the EGARCH model operates in logarithmic form, guaranteeing positivity without explicit constraints. The EGARCH(1,1) specification is given by the following:
+
+\begin{equation}
+	\log\left(\sigma_t^2\right)=\omega+\beta\log\left(\sigma_{t-1}^2\right)+\alpha\left(\frac{|z_{t-1}|}{\sqrt{2/\pi}}-1 \right)+\gamma z_{t-1},
+\end{equation}
+where $\sigma_t^2$ is the conditional variance, $z_{t-1}=\frac{\epsilon_{t-1}}{\sigma_{t-1}}$ is the standard innocation, and $\omega,\beta,\alpha,$ and $\gamma$ are the model parameters. The term involving $|z_{t-1}|$ captures the magnitudes effect of shocks, while the $\gamma z_{t-1}$ term captures leverage effects allowing negative shocks to have a different impact on volatility than positive ones. This flexibility makes the EGARCH model particularly well-suited for modeling financial returns exhibiting volatility clustering and asymmetric responses to news.
+
+\subsection{GJR-GARCH}
+
+The GJR-GARCH model extends the standard GARCH model to account for asymmetric effects in volatility, often referred to as the leverage effect. In financial time series, negative shocks typically increase future volatility more than positive shocks of the same magnitude. The GJR-GARCH(1,1) model captures this behavior by including an indicator function that activates when the past innovation is negative. The conditional variance equation is given by the following
+
+\begin{equation}
+	\sigma_t^2 = \omega + \alpha \epsilon_{t-1}^2 + \gamma \epsilon_{t-1}^2 I_{\{\epsilon_{t-1} < 0\}} + \beta \sigma_{t-1}^2,
+\end{equation}
+where $\epsilon_{t-1}$ is the previous period's shock, $\sigma_t^2$ is the conditional variance, and $I_{\{\epsilon_{t-1} < 0\}}$ is an indicator function that equals 1 when $\epsilon_{t-1} < 0$ and 0 otherwise. The parameters $\omega > 0$, $\alpha \geq 0$, $\beta \geq 0$, and $\gamma \geq 0$ determine the dynamics of the model. The presence of $\gamma$ allows the model to respond more aggressively to negative shocks, thus capturing the asymmetry in financial return volatility.
+
+\section{IGARCH}
+
+The Integrated GARCH (IGARCH) model is a special case of the GARCH model where the effect of past shocks on current volatility does not decay over time. In particular, the sum of the ARCH and GARCH parameters equals one, implying a unit root in the conditional variance equation. The IGARCH(1,1) model is specified as by the following:
+
+\begin{equation}
+	\sigma_t^2 = \omega + \alpha \epsilon_{t-1}^2 + (1 - \alpha) \sigma_{t-1}^2,
+\end{equation}
+where $\omega \geq 0$, $0 \leq \alpha \leq 1$, and the constraint $\alpha + \beta = 1$ is imposed (with $\beta = 1 - \alpha$). This structure implies that shocks to volatility are persistent and have long-lasting effects, a common feature in high-frequency financial return data. Because the variance is integrated (non-stationary), the IGARCH model is typically used to model processes with permanent volatility dynamics and is often applied when testing for unit roots in volatility or as an intermediate step before fitting more flexible models like FIGARCH.
+
+\section{TGARCH}
+
+The Threshold GARCH (TGARCH) model introduces asymmetry in the conditional variance by allowing the impact of positive and negative shocks to differ. Unlike standard GARCH models, the TGARCH specification models the conditional standard deviation (rather than variance), making the asymmetry directly interpretable in terms of volatility. The TGARCH(1,1) model is expressed as:
+
+\begin{equation}
+	\sigma_t = \omega + \alpha |\epsilon_{t-1}| + \gamma \epsilon_{t-1} I_{\{\epsilon_{t-1} < 0\}} + \beta \sigma_{t-1},
+\end{equation}
+where $\epsilon_{t-1}$ is the previous shock, $\sigma_t$ is the conditional standard deviation, and $I_{\{\epsilon_{t-1} < 0\}}$ is an indicator function equal to 1 when the shock is negative. The parameter $\gamma$ captures the asymmetric response of volatility to negative shocks—allowing volatility to rise more in response to bad news than to good news of the same magnitude. This formulation makes TGARCH especially suitable for modeling the leverage effect observed in financial markets.
+\section{Model Selection }
+
+Table (\ref{tab:GARCH_model}) show that the best extension of GARCH is the EGARCH 
 
 \begin{equation}
 \begin{aligned}
 	r_t &= \mu + \phi_1 r_{t-1} + \phi_2 r_{t-2} + \theta_1 \epsilon_{t-1} + \theta_2 \epsilon_{t-2} + \epsilon_t \\
-	&= 1.74405 - 0.05736\, r_{t-1} + 0.87125\, r_{t-2} - 0.11683\, \epsilon_{t-1} - 0.98070\, \epsilon_{t-2} + \epsilon_t
+	& = 0.006454 + 0.028517 r_{t-1} + 0.807257 r_{t-2} - 0.198846 \epsilon_{t-1} - 0.875843 \epsilon_{t-2}
 \end{aligned}
 \end{equation}
 where $r_t$ is the value of the time series at time $t$, $\mu$ is the constant term, $\phi_1$ and $\phi_2$ are the autoregressive coefficients for the first and seceond lags of $r_t$, $\theta_1$ and $\theta_2$ are the moving average coefficients for the first and second lags of the error term $\epsilon_t$
@@ -102,22 +139,33 @@ where $r_t$ is the value of the time series at time $t$, $\mu$ is the constant t
 \begin{equation}
 	\begin{aligned}
 		\sigma_t^2 &= \omega + \alpha_1 \epsilon_{t-1}^2 + \beta_1 \sigma_{t-1}^2 \\
-		&= 31.9997 + 0.04625\, \epsilon_{t-1}^2 + 0.89064\, \sigma_{t-1}^2
+		&= -0.770193 - 0.184622 \epsilon_{t-1}^2 - 0.011050 I_{t-1} \epsilon_{t-1}^2 + 0.842590 \sigma_{t-1}^2
 	\end{aligned}
 \end{equation}
-where $\sigma_t^2$ is the conditional variance at time $t$, $\omega$ is the constant term in the variance equation, $\alpha_1$ is the ARCH parameter, which measures the reaction to conditional variance to past shocks, and $\beta_1$ is the GARCH parameter, which measures the persistence of the conditional variance based on past conditional variances. 
 
-The term $\omega $ term (32.000), representing a baseline variance, is not statistically significant ($p$=0.118). The `alpha1` coefficient (0.046), which captures the impact of past shocks on volatility, is also not statistically significant (p=0.137), suggesting a weak immediate reaction of volatility to new information. However, the `beta1` coefficient (0.891) is highly significant (p=0.000) and close to 1, indicating strong persistence in volatility; past volatility levels are a key determinant of current volatility, causing volatility clustering. The sum of $\alpha_1 $and $\beta_1$ (0.046 + 0.891 = 0.937) is high, confirming that shocks to volatility are quite persistent, though the sum being less than 1 implies the variance process is stationary.
+
+where $\sigma_t^2$ is the conditional variance at time $t$, $\omega$ is the constant term in the variance equation, $\alpha_1$ is the ARCH parameter, which measures the reaction to conditional variance to past shocks, and $\beta_1$ is the GARCH parameter, which measures the persistence of the conditional variance based on past conditional variances. We also have 
+
+\begin{itemize}
+	\item $I_{t-1} = 1$ if $\epsilon_{t-1} < 0$ (negative shock)
+	\item $I_{t-1} = 0$ if $\epsilon_{t-1} \geq 0$ (positive shock)
+\end{itemize}
+The mean dynamics show minimal first-order autoregression (0.029) but strong second-order effects (0.807), suggesting momentum effects with a two-period lag. The significant negative moving average terms (-0.199 and -0.875) indicate complex error correction mechanisms where past shocks have persistent negative effects on current returns.
+
+The variance equation exhibits strong volatility persistence ($\beta_1$ = 0.843), but lacks significant asymmetric response to negative shocks ($\gamma_1$ = -0.011, $p = 0.930$). The negative constant term ($\omega$ = -0.770) and ARCH parameter ($\alpha$ = -0.185) are unconventional and require careful interpretation, as negative values in the variance equation could potentially lead to negative conditional variance predictions under certain conditions. The Student’s t-distribution with approximately 5.7 degrees of freedom accommodates the fat-tailed nature of financial returns, capturing extreme market movements better than a normal distribution would.
+
+The variance equation exhibits strong volatility persistence ($\beta_1$= 0.843), but lacks significant asymmetric response to negative shocks ($\gamma_1$ = -0.011, $p$ = 0.930). The negative constant term ($\omega$ = -0.770) and ARCH parameter ($\alpha_1$ = -0.185) are unconventional and require careful interpretation, as negative values in the variance equation could potentially lead to negative conditional variance predictions under certain conditions. The Student’s t-distribution with approximately 5.7 degrees of freedom accommodates the fat-tailed nature of financial returns, capturing extreme market movements better than a normal distribution would.
+
+\section{Forecasting}
 
 \begin{figure}[!h]
 	\centering
 	\includegraphics[width=0.85\linewidth]{content/plots/GARCH_forecast.png}
-	\caption{ACF and PACF of the Squared Residuals of GARCH(1,1) with ARMA(0,2) mean}
+	\caption{ACF and PACF of the Squared Residuals of EGARCH(1,1)}
 	\label{fig:GARCH_forecast}
 \end{figure}
 
-Figure (\ref{fig:GARCH_forecast}) shows the forecast for the GARCH(1,1) model with ARMA(2,2) mean, which provides valuable insights into both the predicted returns and volatility patterns. The left panel displays the historical series (blue line) characterized by significant fluctuations over the 2018-2025 period, with several dramatic spikes exceeding 50 units in both positive and negative directions. The forward-looking forecast (orange line) projects relatively modest returns with a slight upward trend, accompanied by widening yellow confidence bands that reflect increasing uncertainty over the 5-period forecast horizon. This suggests that while the model anticipates positive returns in the near future, it acknowledges considerable uncertainty in these predictions, consistent with the historical volatility observed in the series.
+Figure (\ref{fig:GARCH_forecast}) shows the forecast for the EGARCH(1,1), which provides valuable insights into both the predicted returns and volatility patterns. The left panel displays the historical series (blue line) characterized by significant fluctuations over the 2018-2025 period, with several dramatic spikes exceeding 50 units in both positive and negative directions. The forward-looking forecast (orange line) projects relatively modest returns with a slight upward trend, accompanied by widening yellow confidence bands that reflect increasing uncertainty over the 5-period forecast horizon. This suggests that while the model anticipates positive returns in the near future, it acknowledges considerable uncertainty in these predictions, consistent with the historical volatility observed in the series.
 
-
-The right panel, displaying unconditional sigma (volatility) forecasts, reveals that volatility has followed a generally declining trend from about 24.5 units in early 2023 to approximately 20.7 units by early 2025. The model forecasts a modest uptick in volatility over the next five periods. This slight increase in projected volatility aligns with the expanding confidence intervals seen in the returns forecast. The overall pattern suggests that while the GARCH model expects volatility to remain lower than historical peaks, it anticipates some volatility persistence - a typical characteristic of financial time series modeled with GARCH specifications. This measured increase in forecasted volatility indicates the model’s response to recent market conditions, though the magnitude remains relatively contained compared to historical levels.
+The right panel, displaying unconditional sigma (volatility) forecasts, reveals that volatility has followed a generally declining trend from about 24.5 units in early 2023 to approximately 20.7 units by early 2025. The model forecasts a modest uptick in volatility over the next five periods. This slight increase in projected volatility aligns with the expanding confidence intervals seen in the returns forecast. The overall pattern suggests that while the EGARCH model expects volatility to remain lower than historical peaks, it anticipates some volatility persistence - a typical characteristic of financial time series modeled with EGARCH specifications. This measured increase in forecasted volatility indicates the model’s response to recent market conditions, though the magnitude remains relatively contained compared to historical levels.
 
