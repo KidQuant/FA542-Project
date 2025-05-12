@@ -17,6 +17,9 @@ getSymbols(symbols, src = "yahoo", from = "2007-01-01", to = "2025-02-10")
 nvda_close <- na.omit(Cl(NVDA))
 qcom_close <- na.omit(Cl(QCOM))
 
+returns_nvda <- diff(nvda_close)[-1] * 252
+returns_qcom <- diff(qcom_close)[-1] * 252
+
 log_returns_nvda <- diff(log(nvda_close))[-1] * 252
 log_returns_qcom <- diff(log(qcom_close))[-1] * 252
 
@@ -224,3 +227,4 @@ cat("Parametric Normal VaR:", round(var_qcom_normal * 100, 3), "%\n")
 cat("Parametric t VaR:", round(var_qcom_t * 100, 3), "%\n")
 cat("Historical Simulation VaR:", round(var_qcom_hist * 100, 3), "%\n")
 cat("GARCH-based VaR (1-day):", round(var_qcom_garch * 100, 3), "%\n")
+
